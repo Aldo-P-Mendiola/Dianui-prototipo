@@ -610,6 +610,22 @@ const FAQ = [
     q: "¿Necesito saber mucho de tecnología para usar DIANUI 911?",
     a: "No. La app está pensada para ser simple: botones grandes, sin términos técnicos y sin pasos complicados.",
   },
+  {
+    q: "¿Las recetas son solo para niños o también para el resto de la familia?",
+    a: "Las porciones que se muestran están pensadas por edad (0-2, 3-5 y 6-12 años), pero los ingredientes y la preparación sirven para toda la familia; solo ajusta la cantidad según quién vaya a comer.",
+  },
+  {
+    q: "¿Qué hago si mi hijo o alguien de mi familia tiene alergias o una condición de salud especial?",
+    a: "El contenido de DIANUI 911 es información general, no un plan personalizado. Si hay alergias, enfermedades o alguna condición especial, es importante confirmar cualquier receta o tip con un nutriólogo (sección en preparación) o con tu médico antes de aplicarlo.",
+  },
+  {
+    q: "¿Necesito internet para usar la app?",
+    a: "Sí, necesitas conexión para abrir la página. Una vez abierta, el progreso que marques en una receta se guarda directamente en tu celular, aunque después te quedes sin conexión por un rato.",
+  },
+  {
+    q: "¿Cómo sé que la información de la app es confiable?",
+    a: "Cada receta y cada tip cita de dónde salió: las Guías Alimentarias saludables y sostenibles para la población mexicana 2025 (SSA, INSP, UNICEF) y los manuales de la Fundación DIANUI A.C. No se basa en opiniones sin respaldo.",
+  },
 ];
 
 function renderFaq(items) {
