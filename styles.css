@@ -1,0 +1,423 @@
+:root{
+    --bg: #0b0f14;
+    --panel: #101823;
+    --panel2: #0f1620;
+    --text: #e9eef5;
+    --muted: #a9b4c2;
+    --border: rgba(255,255,255,.10);
+    --accent: #6ee7b7;
+    --accent2: #60a5fa;
+    --shadow: 0 10px 25px rgba(0,0,0,.35);
+    --radius: 18px;
+    --max: 1100px;
+    --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  }
+  
+  [data-theme="light"]{
+    --bg: #f7fafc;
+    --panel: #ffffff;
+    --panel2: #ffffff;
+    --text: #0b1220;
+    --muted: #516070;
+    --border: rgba(15, 23, 42, .12);
+    --shadow: 0 10px 25px rgba(2,6,23,.08);
+  }
+  
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    background: radial-gradient(1200px 800px at 20% 0%, rgba(96,165,250,.16), transparent 55%),
+                radial-gradient(900px 700px at 100% 20%, rgba(110,231,183,.12), transparent 55%),
+                var(--bg);
+    color:var(--text);
+    font-family:var(--font);
+  }
+  
+  a{ color:inherit; text-decoration:none; }
+  code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  
+  .container{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 22px 18px 60px;
+  }
+  
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    background: color-mix(in oklab, var(--bg) 80%, transparent);
+  }
+  
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width: 190px;
+  }
+  .brand__mark{
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    display:grid;
+    place-items:center;
+    background: linear-gradient(135deg, rgba(110,231,183,.35), rgba(96,165,250,.35));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    font-weight: 800;
+  }
+  .brand__text{ font-weight: 800; letter-spacing:.2px; }
+  .badge{
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  
+  .nav{
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav a{
+    font-size: 14px;
+    color: var(--muted);
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+  .nav a:hover{ background: color-mix(in oklab, var(--panel) 70%, transparent); color: var(--text); }
+  
+  .section{
+    margin-top: 34px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), color-mix(in oklab, var(--panel2) 92%, transparent));
+    box-shadow: var(--shadow);
+  }
+  
+  .hero{
+    margin-top: 18px;
+    display:grid;
+    grid-template-columns: 1.25fr .9fr;
+    gap: 18px;
+    align-items: start;
+  }
+  
+  .hero__copy{
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), color-mix(in oklab, var(--panel2) 92%, transparent));
+    box-shadow: var(--shadow);
+  }
+  
+  .hero__card{
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: color-mix(in oklab, var(--panel) 92%, transparent);
+    box-shadow: var(--shadow);
+  }
+  
+  h1{
+    margin: 0 0 10px;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.06;
+  }
+  h2{ margin: 0 0 10px; font-size: 22px; }
+  .h5{ margin: 0 0 10px; font-size: 16px; }
+  .accent{ background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  
+  .muted{ color: var(--muted); }
+  .tiny{ font-size: 12px; }
+  .disclaimer{
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--muted);
+    border-left: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+    padding-left: 10px;
+  }
+  
+  .hero__cta{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--panel) 85%, transparent);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 650;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn--primary{
+    background: linear-gradient(135deg, rgba(110,231,183,.35), rgba(96,165,250,.35));
+    border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
+  }
+  .btn--ghost{
+    background: transparent;
+    color: var(--muted);
+  }
+  .btn--ghost:hover{ color: var(--text); background: color-mix(in oklab, var(--panel) 65%, transparent); }
+  
+  .input{
+    width: 100%;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 0 12px;
+    background: color-mix(in oklab, var(--panel) 85%, transparent);
+    color: var(--text);
+    outline: none;
+  }
+  .input:focus{
+    border-color: color-mix(in oklab, var(--accent2) 55%, var(--border));
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent2) 15%, transparent);
+  }
+  
+  .label{ display:block; margin-bottom: 8px; color: var(--muted); font-size: 13px; }
+  
+  .divider{
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+  
+  .checklist{
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+  }
+  .checklist li{ margin: 8px 0; }
+  
+  .callout{
+    margin: 14px 0 0;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: radial-gradient(800px 280px at 0% 0%, rgba(110,231,183,.12), transparent 55%);
+  }
+  .callout__title{ margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+  .callout__body{ margin: 0; }
+  
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .tile{
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+  }
+  .tile .btn{ width: 100%; margin-top: 8px; }
+  
+  .flow{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .flow__panel{
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+  }
+  .flow__actions{
+    display:flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .flow__result{
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+  }
+  
+  .resultCard h3{ margin:0 0 8px; }
+  .resultCard p{ margin:0; }
+  
+  .faqTools{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .faqTools .input{ flex: 1 1 340px; }
+  
+  .faq{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  details{
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+    overflow: hidden;
+  }
+  summary{
+    cursor: pointer;
+    padding: 14px;
+    font-weight: 700;
+    list-style: none;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  details .answer{
+    padding: 0 14px 14px;
+    color: var(--muted);
+  }
+  .kbd{
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: 10px;
+    padding: 2px 8px;
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+    font-size: 12px;
+  }
+  
+  .footer{
+    margin-top: 26px;
+    text-align:center;
+    color: var(--muted);
+  }
+  
+  @media (max-width: 980px){
+    .hero{ grid-template-columns: 1fr; }
+    .grid{ grid-template-columns: repeat(2, 1fr); }
+    .flow{ grid-template-columns: 1fr; }
+    .nav{ display:none; }
+  }
+  @media (max-width: 520px){
+    .grid{ grid-template-columns: 1fr; }
+  }
+
+  /* =========================================================
+     Simplicidad y accesibilidad (madres sin experiencia técnica)
+     Botones grandes, texto legible, foco visible.
+     ========================================================= */
+
+  body{ font-size: 16px; }
+  .btn{
+    min-height: 44px;
+    font-size: 15px;
+    padding: 0 18px;
+  }
+  .btn--sm{
+    height: 36px;
+    min-height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+  .input{ min-height: 44px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible{
+    outline: 3px solid color-mix(in oklab, var(--accent2) 70%, transparent);
+    outline-offset: 2px;
+  }
+
+  /* =========================================================
+     Recetario guiado y módulo de contenido guiado
+     (reutilizable para hábitos, descanso, actividad física
+     y, más adelante, salud emocional)
+     ========================================================= */
+
+  .recetaTile{ display:flex; flex-direction:column; }
+  .recetaTile__guided{ margin-top: 12px; }
+  .recetaTile__guided[hidden]{ display:none; }
+
+  .guiado__card{
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--panel2) 92%, transparent);
+  }
+  .guiado__header h4{ margin: 0 0 4px; }
+  .guiado__extra{ margin: 6px 0 10px; }
+
+  .progressBar{
+    height: 10px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--border) 60%, transparent);
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .progressBar__fill{
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width .25s ease;
+  }
+  .progressBar__label{ margin: 6px 0 0; }
+
+  .guiado__steps{
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .guiado__step{
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+  }
+  .guiado__stepLabel{
+    display:flex;
+    align-items:flex-start;
+    gap: 10px;
+    padding: 12px;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .guiado__checkbox{
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    flex: none;
+    accent-color: var(--accent2);
+  }
+  .guiado__stepText{ line-height: 1.4; }
+  .guiado__step--done{
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+  .guiado__step--done .guiado__stepText{
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .guiado__actions{ margin-top: 10px; }
+
+  /* =========================================================
+     Directorio de nutriólogos
+     ========================================================= */
+
+  .nutriologo__card{ display:flex; flex-direction:column; }
+  .nutriologo__empty{ max-width: 520px; }
+  

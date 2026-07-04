@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DIANUI 911 — Orientación nutricional</title>
+  <meta name="description" content="DIANUI 911: programa de orientación y educación nutricional de la Fundación DIANUI A.C., con recetas guiadas, hábitos saludables y, muy pronto, contacto con nutriólogos reales." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand__mark" aria-hidden="true">DI</span>
+      <span class="brand__text">DIANUI 911</span>
+    </a>
+
+    <nav class="nav">
+      <a href="#que-es">¿Qué es?</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#recetario">Recetario</a>
+      <a href="#nutriologos">Nutriólogos</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+
+    <button id="themeBtn" class="btn btn--ghost" type="button" aria-label="Cambiar tema">
+      ☾
+    </button>
+  </header>
+
+  <main id="inicio" class="container">
+    <section class="hero">
+      <div class="hero__copy">
+        <h1>Orientación nutricional <span class="accent">fácil, gratuita y confiable</span>.</h1>
+        <p class="muted">
+          DIANUI 911 es un programa de la Fundación DIANUI A.C. para acompañar a mamás con
+          recetas reales, hábitos saludables y tips prácticos, explicados paso a paso desde el celular.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#empezar">Empezar</a>
+          <a class="btn" href="#faq">Ver preguntas frecuentes</a>
+        </div>
+
+        <p class="disclaimer">
+          Aviso: Esta información es educativa y no sustituye la atención de un profesional de la salud.
+        </p>
+      </div>
+
+      <div class="hero__card" role="region" aria-label="Resumen rápido">
+        <h2 class="h5">Incluye</h2>
+        <ul class="checklist">
+          <li>Recetas reales, explicadas paso a paso</li>
+          <li>Hábitos, descanso y actividad física con tips prácticos</li>
+          <li>Espacio para hablar con un nutriólogo (muy pronto)</li>
+          <li>Pensada para usarse fácilmente desde tu celular</li>
+        </ul>
+        <div class="divider"></div>
+        <p class="tiny muted">
+          Contenido basado en materiales reales de la Fundación DIANUI A.C.
+        </p>
+      </div>
+    </section>
+
+    <section id="que-es" class="section">
+      <h2>¿Qué es DIANUI 911?</h2>
+      <p>
+        DIANUI 911 es un programa de <strong>ayuda, orientación y educación nutricional</strong>
+        de la Fundación DIANUI A.C., dirigido a <strong>mujeres madres de familia</strong>,
+        apoyado por recursos tecnológicos y pensado para acompañarlas desde el celular.
+      </p>
+      <p class="muted">
+        Aquí encontrarás recetas reales y sencillas, hábitos saludables, tips de descanso y
+        actividad física explicados paso a paso — y muy pronto, contacto directo con
+        nutriólogos y pasantes que podrán orientarte de forma personalizada.
+      </p>
+
+      <div class="callout">
+        <p class="callout__title">En una línea:</p>
+        <p class="callout__body">
+          "Nutrición confiable + acompañamiento digital + acceso fácil desde el celular".
+        </p>
+      </div>
+
+      <p class="muted tiny">
+        Fuente: Fundación DIANUI A.C. y materiales de la carpeta de recursos Red Aliados.
+      </p>
+    </section>
+
+    <section id="como-funciona" class="section">
+      <h2>Cómo funciona (flujo rápido)</h2>
+      <p class="muted">
+        Selecciona lo que buscas y te sugerimos un camino: recetas, tips o contacto con un nutriólogo.
+      </p>
+
+      <div id="empezar" class="flow">
+        <div class="flow__panel">
+          <label class="label" for="goalSelect">¿Qué necesitas hoy?</label>
+          <select id="goalSelect" class="input">
+            <option value="contacto">Contactar a un nutriólogo</option>
+            <option value="recetas">Ver recetas</option>
+            <option value="descanso">Tips de descanso</option>
+            <option value="actividad">Actividad física</option>
+            <option value="habitos">Hábitos alimenticios</option>
+          </select>
+
+          <div class="flow__actions">
+            <button id="goBtn" class="btn btn--primary" type="button">Continuar</button>
+            <button id="resetBtn" class="btn btn--ghost" type="button">Reiniciar</button>
+          </div>
+
+          <p class="tiny muted">
+            Nota: el contacto directo con nutriólogos está en preparación; mientras tanto puedes
+            usar las recetas y los tips ya disponibles.
+          </p>
+        </div>
+
+        <div class="flow__result" aria-live="polite" aria-atomic="true">
+          <div class="resultCard">
+            <h3 class="h5">Tu ruta aparecerá aquí 👇</h3>
+            <p class="muted">Elige una opción y presiona "Continuar".</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recetario" class="section">
+      <h2>Recetario guiado</h2>
+      <p class="muted">
+        Elige una receta y ve marcando cada paso como listo conforme la vayas preparando.
+        Tu progreso se guarda aunque cierres la app.
+      </p>
+
+      <div id="recetarioGrid" class="grid"></div>
+
+      <div class="divider"></div>
+      <p class="tiny muted">
+        Recetas basadas en el Manual de Recetas Nutritivas con Ingredientes de Huerto,
+        material de apoyo de la Fundación DIANUI A.C.
+      </p>
+    </section>
+
+    <section id="nutriologos" class="section">
+      <h2>Habla con un nutriólogo</h2>
+      <p>
+        La Fundación DIANUI A.C. va a poner a tu disposición nutriólogos y pasantes reales con
+        quienes podrás comunicarte directamente desde aquí.
+      </p>
+
+      <div id="nutriologosList"></div>
+
+      <div class="divider"></div>
+      <p class="tiny muted">
+        Este espacio se activará en cuanto se proporcione el contacto real; mientras tanto,
+        toda la información de recetas y tips ya disponible es gratuita y de libre acceso.
+      </p>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Preguntas frecuentes</h2>
+      <p class="muted">
+        Preguntas típicas para explicar qué es DIANUI 911 y cómo usar la app.
+      </p>
+
+      <div class="faqTools">
+        <input id="faqSearch" class="input" type="search" placeholder="Buscar en las preguntas (ej. recetas, descanso, nutriólogo)..." />
+        <button id="expandAllBtn" class="btn btn--ghost" type="button">Expandir todo</button>
+        <button id="collapseAllBtn" class="btn btn--ghost" type="button">Cerrar todo</button>
+      </div>
+
+      <div id="faqList" class="faq" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      <p class="tiny muted">
+        DIANUI 911 — Programa de orientación y educación nutricional de la Fundación DIANUI A.C.
+        Servicio Social, Aldo Paz Mendiola.
+      </p>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
