@@ -85,14 +85,13 @@ Funciona igual con un solo nutriólogo o con varios; no requiere cambios de dise
 
 ## Pendiente (no incluido en esta entrega)
 
-- **Chatbot con IA (Gemini + backend serverless)**: función secundaria planeada;
-  requiere una cuenta y API key de Google Gemini, y una cuenta de hosting con
-  funciones serverless (Vercel o Netlify) que el equipo debe proporcionar antes de
-  poder construirlo y desplegarlo.
 - **Publicación en línea (GitHub Pages u otro hosting)**: pendiente de conectar
   este repositorio a la cuenta de GitHub del alumno y configurar el despliegue.
 - **Validación de contenido de salud** por parte de un nutriólogo de la Fundación
   DIANUI A.C. antes de considerar el contenido como definitivo.
+
+> Nota: se decidió no construir un chatbot con IA. La app se enfoca por completo
+> en el contenido guiado real y en el futuro directorio de nutriólogos.
 
 ## Aviso
 
