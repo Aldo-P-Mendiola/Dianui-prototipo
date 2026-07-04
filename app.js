@@ -84,22 +84,33 @@ function resetProgress(key, totalSteps) {
 
 /**
  * Crea la tarjeta guiada de un elemento de contenido.
- * @param {Object} item - { id, categoria, titulo, resumen, pasos: [texto,...], extra: html opcional, fuente }
+ * @param {Object} item - { id, categoria, titulo, resumen, pasos: [texto,...], extra: html opcional, fuente, icono }
+ * @param {Object} [opts] - { modo: "lista" (por defecto) | "carrusel" }
+ *   "carrusel": muestra los pasos de uno en uno, como slides, con flechas,
+ *   puntos y swipe. Se usa para las recetas, donde ver todo el texto junto
+ *   se siente pesado en un celular. "lista": muestra todos los pasos como
+ *   checklist (se sigue usando para hábitos, descanso y actividad, que son
+ *   tips cortos, no una secuencia de cocina).
  */
-function buildGuidedCard(item) {
+function buildGuidedCard(item, opts) {
+  opts = opts || {};
+  const modo = opts.modo === "carrusel" ? "carrusel" : "lista";
   const key = `${item.categoria}:${item.id}`;
   const total = item.pasos.length;
   let done = getProgress(key, total);
 
-  const card = el("article", { class: "guiado__card", "data-key": key });
-
-  const doneCount = () => done.filter(Boolean).length;
+  const card = el("article", { class: `guiado__card guiado__card--${modo}`, "data-key": key });
 
   const header = el("div", { class: "guiado__header" });
-  header.appendChild(el("h4", { class: "h5" }, escapeHtml(item.titulo)));
-  if (item.resumen) {
-    header.appendChild(el("p", { class: "muted tiny" }, escapeHtml(item.resumen)));
+  if (item.icono) {
+    header.appendChild(el("div", { class: "guiado__icon", "aria-hidden": "true" }, item.icono));
   }
+  const headerText = el("div", { class: "guiado__headerText" });
+  headerText.appendChild(el("h4", { class: "h5" }, escapeHtml(item.titulo)));
+  if (item.resumen) {
+    headerText.appendChild(el("p", { class: "muted tiny" }, escapeHtml(item.resumen)));
+  }
+  header.appendChild(headerText);
   card.appendChild(header);
 
   if (item.extra) {
@@ -114,10 +125,8 @@ function buildGuidedCard(item) {
   card.appendChild(progressWrap);
   card.appendChild(progressLabel);
 
-  const list = el("ul", { class: "guiado__steps" });
-
   function refreshProgressUI() {
-    const n = doneCount();
+    const n = done.filter(Boolean).length;
     const pct = total ? Math.round((n / total) * 100) : 0;
     progressFill.style.width = pct + "%";
     progressWrap.setAttribute("aria-valuenow", String(n));
@@ -127,46 +136,144 @@ function buildGuidedCard(item) {
       `${n} de ${total} pasos listos`;
   }
 
-  item.pasos.forEach((pasoTexto, idx) => {
-    const li = el("li", { class: "guiado__step" });
-    const checkboxId = `chk-${key.replace(/[^a-z0-9]/gi, "-")}-${idx}`;
-    const label = el("label", { class: "guiado__stepLabel", for: checkboxId });
+  // Se define según el modo (lista o carrusel); la usa el botón "Reiniciar".
+  let syncStepsView = () => {};
 
-    const input = el("input", {
-      type: "checkbox",
-      id: checkboxId,
-      class: "guiado__checkbox",
+  if (modo === "carrusel") {
+    const carrusel = el("div", { class: "carrusel" });
+    carrusel.appendChild(el("p", { class: "tiny muted carrusel__hint" }, "Desliza hacia los lados o usa las flechas para avanzar."));
+
+    const navRow = el("div", { class: "carrusel__nav" });
+    const prevBtn = el("button", { type: "button", class: "btn btn--ghost carrusel__arrow", "aria-label": "Paso anterior" }, "‹");
+    const counter = el("p", { class: "tiny muted carrusel__counter" });
+    const nextBtn = el("button", { type: "button", class: "btn btn--primary carrusel__arrow", "aria-label": "Paso siguiente" }, "›");
+    navRow.appendChild(prevBtn);
+    navRow.appendChild(counter);
+    navRow.appendChild(nextBtn);
+    carrusel.appendChild(navRow);
+
+    const slide = el("div", { class: "carrusel__slide" });
+    const stepText = el("p", { class: "carrusel__stepText" });
+    const doneLabel = el("label", { class: "carrusel__doneLabel" });
+    const doneCheckbox = el("input", { type: "checkbox", class: "carrusel__checkbox" });
+    doneLabel.appendChild(doneCheckbox);
+    doneLabel.appendChild(el("span", {}, "Marcar este paso como listo"));
+    slide.appendChild(stepText);
+    slide.appendChild(doneLabel);
+    carrusel.appendChild(slide);
+
+    const dotsRow = el("div", { class: "carrusel__dots", role: "tablist", "aria-label": "Ir a un paso de la receta" });
+    const dots = item.pasos.map((_, idx) => {
+      const dot = el("button", { type: "button", class: "carrusel__dot", "aria-label": `Ir al paso ${idx + 1}` });
+      dot.addEventListener("click", () => goTo(idx));
+      dotsRow.appendChild(dot);
+      return dot;
     });
-    input.checked = !!done[idx];
+    carrusel.appendChild(dotsRow);
 
-    const span = el("span", { class: "guiado__stepText" }, `<span class="kbd">${idx + 1}</span> ${escapeHtml(pasoTexto)}`);
+    card.appendChild(carrusel);
 
-    label.appendChild(input);
-    label.appendChild(span);
-    li.appendChild(label);
-    list.appendChild(li);
+    let current = done.findIndex((d) => !d);
+    if (current === -1) current = 0;
 
-    input.addEventListener("change", () => {
-      done[idx] = input.checked;
+    function render() {
+      stepText.innerHTML = `<span class="kbd">${current + 1}</span> ${escapeHtml(item.pasos[current])}`;
+      counter.textContent = `Paso ${current + 1} de ${total}`;
+      doneCheckbox.checked = !!done[current];
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("carrusel__dot--active", idx === current);
+        dot.classList.toggle("carrusel__dot--done", !!done[idx]);
+      });
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(total - 1, idx));
+      render();
+    }
+
+    prevBtn.addEventListener("click", () => goTo(current - 1));
+    nextBtn.addEventListener("click", () => goTo(current + 1));
+
+    doneCheckbox.addEventListener("change", () => {
+      done[current] = doneCheckbox.checked;
       saveProgress(key, done);
-      li.classList.toggle("guiado__step--done", input.checked);
       refreshProgressUI();
+      render();
+      if (doneCheckbox.checked && current < total - 1) {
+        setTimeout(() => goTo(current + 1), 300);
+      }
     });
 
-    if (done[idx]) li.classList.add("guiado__step--done");
-  });
+    let touchStartX = null;
+    slide.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    slide.addEventListener("touchend", (e) => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        goTo(dx < 0 ? current + 1 : current - 1);
+      }
+      touchStartX = null;
+    });
 
-  card.appendChild(list);
+    syncStepsView = () => {
+      current = 0;
+      render();
+    };
+
+    render();
+  } else {
+    const list = el("ul", { class: "guiado__steps" });
+
+    item.pasos.forEach((pasoTexto, idx) => {
+      const li = el("li", { class: "guiado__step" });
+      const checkboxId = `chk-${key.replace(/[^a-z0-9]/gi, "-")}-${idx}`;
+      const label = el("label", { class: "guiado__stepLabel", for: checkboxId });
+
+      const input = el("input", {
+        type: "checkbox",
+        id: checkboxId,
+        class: "guiado__checkbox",
+      });
+      input.checked = !!done[idx];
+
+      const span = el("span", { class: "guiado__stepText" }, `<span class="kbd">${idx + 1}</span> ${escapeHtml(pasoTexto)}`);
+
+      label.appendChild(input);
+      label.appendChild(span);
+      li.appendChild(label);
+      list.appendChild(li);
+
+      input.addEventListener("change", () => {
+        done[idx] = input.checked;
+        saveProgress(key, done);
+        li.classList.toggle("guiado__step--done", input.checked);
+        refreshProgressUI();
+      });
+
+      if (done[idx]) li.classList.add("guiado__step--done");
+    });
+
+    card.appendChild(list);
+
+    syncStepsView = () => {
+      $all(".guiado__checkbox", list).forEach((cb) => (cb.checked = false));
+      $all(".guiado__step", list).forEach((li) => li.classList.remove("guiado__step--done"));
+    };
+  }
+
   refreshProgressUI();
 
   const actions = el("div", { class: "guiado__actions" });
-  const resetBtn = el("button", { type: "button", class: "btn btn--ghost btn--sm" }, "Reiniciar esta lista");
+  const resetBtn = el("button", { type: "button", class: "btn btn--ghost btn--sm" }, "Reiniciar");
   resetBtn.addEventListener("click", () => {
     done = new Array(total).fill(false);
     resetProgress(key, total);
-    $all(".guiado__checkbox", list).forEach((cb) => (cb.checked = false));
-    $all(".guiado__step", list).forEach((li) => li.classList.remove("guiado__step--done"));
     refreshProgressUI();
+    syncStepsView();
   });
   actions.appendChild(resetBtn);
   card.appendChild(actions);
@@ -192,6 +299,7 @@ const CONTENT = {
   recetas: [
     {
       id: "crema-zanahoria-calabaza",
+      icono: "🥕",
       titulo: "Crema de zanahoria y calabaza",
       resumen: "120 kcal por porción · 2 g de proteína",
       pasos: [
@@ -204,6 +312,7 @@ const CONTENT = {
     },
     {
       id: "ensalada-pepino-tomate",
+      icono: "🥗",
       titulo: "Ensalada de pepino y tomate",
       resumen: "80 kcal por porción · 2 g de proteína",
       pasos: [
@@ -216,6 +325,7 @@ const CONTENT = {
     },
     {
       id: "tortitas-espinaca",
+      icono: "🥬",
       titulo: "Tortitas de espinaca",
       resumen: "150 kcal por porción · 8 g de proteína",
       pasos: [
@@ -228,6 +338,7 @@ const CONTENT = {
     },
     {
       id: "arroz-con-verduras",
+      icono: "🍚",
       titulo: "Arroz con verduras",
       resumen: "190 kcal por porción · 5 g de proteína",
       pasos: [
@@ -240,6 +351,7 @@ const CONTENT = {
     },
     {
       id: "omelette-espinaca-tomate",
+      icono: "🍳",
       titulo: "Omelette de espinaca y tomate",
       resumen: "170 kcal por porción · 11 g de proteína",
       pasos: [
@@ -252,6 +364,7 @@ const CONTENT = {
     },
     {
       id: "sopa-de-verduras",
+      icono: "🍲",
       titulo: "Sopa de verduras",
       resumen: "100 kcal por porción · 3 g de proteína",
       pasos: [
@@ -264,6 +377,7 @@ const CONTENT = {
     },
     {
       id: "tacos-lechuga-pollo",
+      icono: "🌮",
       titulo: "Tacos de lechuga con pollo",
       resumen: "200 kcal por porción · 15 g de proteína",
       pasos: [
@@ -276,6 +390,7 @@ const CONTENT = {
     },
     {
       id: "smoothie-fresa-espinaca",
+      icono: "🥤",
       titulo: "Smoothie de fresa y espinaca",
       resumen: "140 kcal por porción · 6 g de proteína",
       pasos: [
@@ -478,10 +593,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function buildRecetaPreview(receta) {
   const wrap = el("div", { class: "tile recetaTile" });
-  wrap.appendChild(el("h3", { class: "h5" }, escapeHtml(receta.titulo)));
-  wrap.appendChild(el("p", { class: "muted tiny" }, escapeHtml(receta.resumen || "")));
 
-  const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver receta paso a paso");
+  const top = el("div", { class: "recetaTile__top" });
+  if (receta.icono) {
+    top.appendChild(el("div", { class: "recetaTile__icon", "aria-hidden": "true" }, receta.icono));
+  }
+  top.appendChild(el("h3", { class: "h5 recetaTile__titulo" }, escapeHtml(receta.titulo)));
+  wrap.appendChild(top);
+
+  if (receta.resumen) {
+    const chips = el("div", { class: "recetaTile__chips" });
+    receta.resumen
+      .split("·")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .forEach((parte) => chips.appendChild(el("span", { class: "chip tiny" }, escapeHtml(parte))));
+    wrap.appendChild(chips);
+  }
+
+  const stepCount = el("p", { class: "tiny muted recetaTile__stepCount" }, `${receta.pasos.length} pasos, en modo slides`);
+  wrap.appendChild(stepCount);
+
+  const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver receta en pasos");
   const guidedHolder = el("div", { class: "recetaTile__guided", hidden: "hidden" });
 
   let built = false;
@@ -489,14 +622,14 @@ function buildRecetaPreview(receta) {
     const isHidden = guidedHolder.hasAttribute("hidden");
     if (isHidden) {
       if (!built) {
-        guidedHolder.appendChild(buildGuidedCard({ ...receta, categoria: "receta" }));
+        guidedHolder.appendChild(buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel" }));
         built = true;
       }
       guidedHolder.removeAttribute("hidden");
       toggleBtn.textContent = "Ocultar receta";
     } else {
       guidedHolder.setAttribute("hidden", "hidden");
-      toggleBtn.textContent = "Ver receta paso a paso";
+      toggleBtn.textContent = "Ver receta en pasos";
     }
   });
 
