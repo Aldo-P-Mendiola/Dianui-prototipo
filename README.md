@@ -83,6 +83,22 @@ const NUTRIOLOGOS = [
 
 Funciona igual con un solo nutriólogo o con varios; no requiere cambios de diseño.
 
+### Qué necesita proporcionar la Fundación DIANUI A.C. para activar esta sección
+
+Nota dirigida a la organización, no solo al equipo técnico: para pasar de "Muy pronto" a
+un directorio activo, se necesita que Dianui confirme:
+
+1. **Quiénes** van a aparecer (nombre y, si aplica, cédula o especialidad).
+2. **Cómo quieren que las mamás los contacten** (WhatsApp directo, formulario, correo,
+   u otro medio) — el componente ya está preparado para cualquiera de esas opciones.
+3. **Si será uno o varios nutriólogos/pasantes**, para decidir si se muestra como un
+   solo botón de contacto o como un directorio con varias tarjetas.
+4. **Autorización de que el contenido y el contacto ya fueron revisados** por alguien
+   con criterio profesional de la fundación, antes de publicarlo.
+
+En cuanto se tenga esa información, activar la sección es solo cuestión de llenar el
+arreglo `NUTRIOLOGOS` — no requiere rediseñar nada.
+
 ## Pendiente (no incluido en esta entrega)
 
 - **Publicación en línea (GitHub Pages u otro hosting)**: pendiente de conectar

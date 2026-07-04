@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
       $(".flow__result").innerHTML = `
         <div class="resultCard">
           <h3 class="h5">Tu ruta aparecerá aquí 👇</h3>
-          <p class="muted">Elige una opción y presiona "Continuar".</p>
+          <p class="muted">Elige una opción y presiona “Continuar”.</p>
         </div>
       `;
     });
