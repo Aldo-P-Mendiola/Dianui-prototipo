@@ -588,6 +588,68 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================
+   Modal / popup genérico
+   Se usa para mostrar el detalle de una receta sin llenar
+   toda la página: mientras no se pide, queda oculto.
+   ========================= */
+
+let activeModalClose = null;
+
+function closeActiveModal() {
+  if (activeModalClose) activeModalClose();
+}
+
+function openModal({ title, icon, bodyNode }) {
+  closeActiveModal();
+
+  const overlay = el("div", { class: "modalOverlay" });
+  const dialog = el("div", {
+    class: "modalDialog",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-label": title || "Detalle",
+  });
+
+  const header = el("div", { class: "modalDialog__header" });
+  if (icon) {
+    header.appendChild(el("span", { class: "modalDialog__icon", "aria-hidden": "true" }, icon));
+  }
+  header.appendChild(el("h3", { class: "h5 modalDialog__title" }, escapeHtml(title || "")));
+  const closeBtn = el("button", { type: "button", class: "btn btn--ghost btn--sm modalDialog__close", "aria-label": "Cerrar" }, "✕");
+  header.appendChild(closeBtn);
+  dialog.appendChild(header);
+
+  const body = el("div", { class: "modalDialog__body" });
+  body.appendChild(bodyNode);
+  dialog.appendChild(body);
+
+  overlay.appendChild(dialog);
+  document.body.appendChild(overlay);
+  document.body.classList.add("noScroll");
+
+  function onKeydown(e) {
+    if (e.key === "Escape") close();
+  }
+  function close() {
+    overlay.remove();
+    document.body.classList.remove("noScroll");
+    document.removeEventListener("keydown", onKeydown);
+    if (activeModalClose === close) activeModalClose = null;
+  }
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
+  });
+  closeBtn.addEventListener("click", close);
+  document.addEventListener("keydown", onKeydown);
+
+  activeModalClose = close;
+  closeBtn.focus();
+
+  return { close };
+}
+
+/* =========================
    Vista previa de receta (tarjeta pequeña + expandir)
    ========================= */
 
@@ -615,26 +677,19 @@ function buildRecetaPreview(receta) {
   wrap.appendChild(stepCount);
 
   const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver receta en pasos");
-  const guidedHolder = el("div", { class: "recetaTile__guided", hidden: "hidden" });
 
-  let built = false;
+  // La tarjeta guiada se construye una sola vez y se reutiliza cada vez
+  // que se abre el popup, así el progreso y el paso donde se quedó el
+  // usuario no se pierden al cerrar y volver a abrir.
+  let guidedCard = null;
   toggleBtn.addEventListener("click", () => {
-    const isHidden = guidedHolder.hasAttribute("hidden");
-    if (isHidden) {
-      if (!built) {
-        guidedHolder.appendChild(buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel" }));
-        built = true;
-      }
-      guidedHolder.removeAttribute("hidden");
-      toggleBtn.textContent = "Ocultar receta";
-    } else {
-      guidedHolder.setAttribute("hidden", "hidden");
-      toggleBtn.textContent = "Ver receta en pasos";
+    if (!guidedCard) {
+      guidedCard = buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel" });
     }
+    openModal({ title: receta.titulo, icon: receta.icono, bodyNode: guidedCard });
   });
 
   wrap.appendChild(toggleBtn);
-  wrap.appendChild(guidedHolder);
   return wrap;
 }
 
