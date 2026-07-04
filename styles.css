@@ -100,6 +100,11 @@
     border-radius: 10px;
   }
   .nav a:hover{ background: color-mix(in oklab, var(--panel) 70%, transparent); color: var(--text); }
+  .nav a.nav__link--active{
+    color: var(--text);
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    font-weight: 700;
+  }
   
   .section{
     margin-top: 34px;
@@ -628,5 +633,76 @@
       from{ transform: scale(.96); opacity: 0; }
       to{ transform: scale(1); opacity: 1; }
     }
+  }
+
+  /* =========================================================
+     Navegación por pantallas (app de menú)
+     Solo una pantalla es visible a la vez: la mamá ve el menú
+     principal y entra a una sección solo cuando la elige.
+     ========================================================= */
+
+  .screen{ display:none; }
+  .screen.screen--active{
+    display:block;
+    animation: screenFadeIn .18s ease;
+  }
+  @keyframes screenFadeIn{
+    from{ opacity: 0; transform: translateY(6px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .section.screen{ margin-top: 18px; }
+
+  .screen__back{
+    margin-bottom: 14px;
+  }
+
+  .menuGrid{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .menuCard{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    width: 100%;
+    min-height: 64px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), color-mix(in oklab, var(--panel2) 92%, transparent));
+    box-shadow: var(--shadow);
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+  }
+  .menuCard:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--accent2) 45%, var(--border)); }
+  .menuCard__icon{
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display:grid;
+    place-items:center;
+    font-size: 22px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(153,239,77,.35), rgba(0,71,80,.45));
+    border: 1px solid var(--border);
+  }
+  .menuCard__text{
+    flex: 1;
+    min-width: 0;
+    display:flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .menuCard__title{ font-weight: 700; font-size: 15px; }
+  .menuCard__desc{ display:block; }
+  .menuCard__arrow{
+    flex: none;
+    font-size: 22px;
+    color: var(--muted);
   }
   

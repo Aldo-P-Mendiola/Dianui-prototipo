@@ -95,23 +95,28 @@ function resetProgress(key, totalSteps) {
 function buildGuidedCard(item, opts) {
   opts = opts || {};
   const modo = opts.modo === "carrusel" ? "carrusel" : "lista";
+  // Cuando la tarjeta se muestra dentro de un popup que ya trae su propio
+  // título e ícono (como el modal de recetas), no repetimos el encabezado aquí.
+  const mostrarHeader = opts.mostrarHeader !== false;
   const key = `${item.categoria}:${item.id}`;
   const total = item.pasos.length;
   let done = getProgress(key, total);
 
   const card = el("article", { class: `guiado__card guiado__card--${modo}`, "data-key": key });
 
-  const header = el("div", { class: "guiado__header" });
-  if (item.icono) {
-    header.appendChild(el("div", { class: "guiado__icon", "aria-hidden": "true" }, item.icono));
+  if (mostrarHeader) {
+    const header = el("div", { class: "guiado__header" });
+    if (item.icono) {
+      header.appendChild(el("div", { class: "guiado__icon", "aria-hidden": "true" }, item.icono));
+    }
+    const headerText = el("div", { class: "guiado__headerText" });
+    headerText.appendChild(el("h4", { class: "h5" }, escapeHtml(item.titulo)));
+    if (item.resumen) {
+      headerText.appendChild(el("p", { class: "muted tiny" }, escapeHtml(item.resumen)));
+    }
+    header.appendChild(headerText);
+    card.appendChild(header);
   }
-  const headerText = el("div", { class: "guiado__headerText" });
-  headerText.appendChild(el("h4", { class: "h5" }, escapeHtml(item.titulo)));
-  if (item.resumen) {
-    headerText.appendChild(el("p", { class: "muted tiny" }, escapeHtml(item.resumen)));
-  }
-  header.appendChild(headerText);
-  card.appendChild(header);
 
   if (item.extra) {
     const extraBox = el("div", { class: "guiado__extra tiny muted" }, item.extra);
@@ -501,6 +506,43 @@ function renderNutriologos() {
 }
 
 /* =========================
+   Navegación por pantallas (app de menú)
+   En vez de un scroll largo con todo visible, la página se
+   comporta como una app: solo la pantalla de inicio (menú) o
+   una sección a la vez están visibles. Nada se muestra hasta
+   que la mamá lo pide.
+   ========================= */
+
+const SCREEN_IDS = ["home", "que-es", "como-funciona", "recetario", "nutriologos", "faq"];
+
+function showScreen(id, opts) {
+  opts = opts || {};
+  if (!SCREEN_IDS.includes(id)) id = "home";
+
+  SCREEN_IDS.forEach((screenId) => {
+    const node = document.getElementById(screenId);
+    if (node) node.classList.toggle("screen--active", screenId === id);
+  });
+
+  $all(".nav a").forEach((a) => {
+    a.classList.toggle("nav__link--active", a.dataset.target === id);
+  });
+
+  if (!opts.skipHash) {
+    const newHash = "#" + id;
+    if (location.hash !== newHash) {
+      history.pushState({ screen: id }, "", newHash);
+    }
+  }
+
+  try {
+    window.scrollTo(0, 0);
+  } catch (e) {
+    /* algunos entornos de prueba no implementan scrollTo; no afecta la navegación */
+  }
+}
+
+/* =========================
    Tema
    ========================= */
 
@@ -524,6 +566,27 @@ document.addEventListener("DOMContentLoaded", () => {
       setTheme(current === "dark" ? "light" : "dark");
     });
   }
+
+  /* =========================
+     Navegación por pantallas
+     Cualquier elemento con [data-target] (tarjetas del menú,
+     enlaces del nav, botones "volver", CTA del hero) cambia
+     de pantalla en lugar de hacer scroll.
+     ========================= */
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-target]");
+    if (!trigger) return;
+    e.preventDefault();
+    showScreen(trigger.dataset.target);
+  });
+
+  window.addEventListener("popstate", () => {
+    const id = (location.hash || "#home").slice(1);
+    showScreen(id, { skipHash: true });
+  });
+
+  const initialId = (location.hash || "#home").slice(1);
+  showScreen(initialId, { skipHash: true });
 
   /* =========================
      Recetario guiado
@@ -684,7 +747,7 @@ function buildRecetaPreview(receta) {
   let guidedCard = null;
   toggleBtn.addEventListener("click", () => {
     if (!guidedCard) {
-      guidedCard = buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel" });
+      guidedCard = buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel", mostrarHeader: false });
     }
     openModal({ title: receta.titulo, icon: receta.icono, bodyNode: guidedCard });
   });
@@ -709,7 +772,7 @@ const ROUTES = {
             pasantes certificados por la Fundación DIANUI A.C. Esta sección
             está en preparación.
           </p>
-          <a class="btn btn--primary" href="#nutriologos">Ver esta sección</a>
+          <a class="btn btn--primary" href="#nutriologos" data-target="nutriologos">Ver esta sección</a>
           <p class="tiny muted" style="margin-top:10px;">Mientras tanto, explora las recetas y los tips ya disponibles.</p>
         </div>
       `;
@@ -722,7 +785,7 @@ const ROUTES = {
         <div class="resultCard">
           <h3 class="h5">Recetas reales, paso a paso</h3>
           <p class="muted">Elige una receta y marca cada paso como listo conforme la vayas preparando.</p>
-          <a class="btn btn--primary" href="#recetario">Ir al recetario</a>
+          <a class="btn btn--primary" href="#recetario" data-target="recetario">Ir al recetario</a>
           <p class="tiny muted" style="margin-top:10px;">Si tienes dudas sobre porciones, contacta a un nutriólogo (sección en preparación).</p>
         </div>
       `;

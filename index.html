@@ -10,17 +10,17 @@
 
 <body>
   <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+    <a class="brand" href="#home" data-target="home" aria-label="Ir al inicio">
       <span class="brand__mark" aria-hidden="true">DI</span>
       <span class="brand__text">DIANUI 911</span>
     </a>
 
     <nav class="nav">
-      <a href="#que-es">¿Qué es?</a>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#recetario">Recetario</a>
-      <a href="#nutriologos">Nutriólogos</a>
-      <a href="#faq">Preguntas</a>
+      <a href="#que-es" data-target="que-es">¿Qué es?</a>
+      <a href="#como-funciona" data-target="como-funciona">Cómo funciona</a>
+      <a href="#recetario" data-target="recetario">Recetario</a>
+      <a href="#nutriologos" data-target="nutriologos">Nutriólogos</a>
+      <a href="#faq" data-target="faq">Preguntas</a>
     </nav>
 
     <button id="themeBtn" class="btn btn--ghost" type="button" aria-label="Cambiar tema">
@@ -28,41 +28,91 @@
     </button>
   </header>
 
-  <main id="inicio" class="container">
-    <section class="hero">
-      <div class="hero__copy">
-        <h1>Orientación nutricional <span class="accent">fácil, gratuita y confiable</span>.</h1>
-        <p class="muted">
-          DIANUI 911 es un programa de la Fundación DIANUI A.C. para acompañar a mamás con
-          recetas reales, hábitos saludables y tips prácticos, explicados paso a paso desde el celular.
-        </p>
+  <main class="container">
+    <section id="home" class="screen screen--active">
+      <div class="hero">
+        <div class="hero__copy">
+          <h1>Orientación nutricional <span class="accent">fácil, gratuita y confiable</span>.</h1>
+          <p class="muted">
+            DIANUI 911 es un programa de la Fundación DIANUI A.C. para acompañar a mamás con
+            recetas reales, hábitos saludables y tips prácticos, explicados paso a paso desde el celular.
+          </p>
 
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#empezar">Empezar</a>
-          <a class="btn" href="#faq">Ver preguntas frecuentes</a>
+          <div class="hero__cta">
+            <button type="button" class="btn btn--primary" data-target="como-funciona">Empezar</button>
+            <button type="button" class="btn" data-target="faq">Ver preguntas frecuentes</button>
+          </div>
+
+          <p class="disclaimer">
+            Aviso: Esta información es educativa y no sustituye la atención de un profesional de la salud.
+          </p>
         </div>
 
-        <p class="disclaimer">
-          Aviso: Esta información es educativa y no sustituye la atención de un profesional de la salud.
-        </p>
+        <div class="hero__card" role="region" aria-label="Resumen rápido">
+          <h2 class="h5">Incluye</h2>
+          <ul class="checklist">
+            <li>Recetas reales, explicadas paso a paso</li>
+            <li>Hábitos, descanso y actividad física con tips prácticos</li>
+            <li>Espacio para hablar con un nutriólogo (muy pronto)</li>
+            <li>Pensada para usarse fácilmente desde tu celular</li>
+          </ul>
+          <div class="divider"></div>
+          <p class="tiny muted">
+            Contenido basado en materiales reales de la Fundación DIANUI A.C.
+          </p>
+        </div>
       </div>
 
-      <div class="hero__card" role="region" aria-label="Resumen rápido">
-        <h2 class="h5">Incluye</h2>
-        <ul class="checklist">
-          <li>Recetas reales, explicadas paso a paso</li>
-          <li>Hábitos, descanso y actividad física con tips prácticos</li>
-          <li>Espacio para hablar con un nutriólogo (muy pronto)</li>
-          <li>Pensada para usarse fácilmente desde tu celular</li>
-        </ul>
-        <div class="divider"></div>
-        <p class="tiny muted">
-          Contenido basado en materiales reales de la Fundación DIANUI A.C.
-        </p>
+      <div class="menuGrid" role="navigation" aria-label="Menú principal">
+        <button type="button" class="menuCard" data-target="que-es">
+          <span class="menuCard__icon" aria-hidden="true">💡</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">¿Qué es DIANUI 911?</span>
+            <span class="menuCard__desc muted tiny">Conoce el programa en un minuto</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="menuCard" data-target="como-funciona">
+          <span class="menuCard__icon" aria-hidden="true">🧭</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">Cómo funciona (flujo rápido)</span>
+            <span class="menuCard__desc muted tiny">Dinos qué necesitas y te sugerimos un camino</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="menuCard" data-target="recetario">
+          <span class="menuCard__icon" aria-hidden="true">🍲</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">Recetario guiado</span>
+            <span class="menuCard__desc muted tiny">8 recetas reales, paso a paso</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="menuCard" data-target="nutriologos">
+          <span class="menuCard__icon" aria-hidden="true">🩺</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">Habla con un nutriólogo</span>
+            <span class="menuCard__desc muted tiny">Contacto directo (muy pronto)</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="menuCard" data-target="faq">
+          <span class="menuCard__icon" aria-hidden="true">❓</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">Preguntas frecuentes</span>
+            <span class="menuCard__desc muted tiny">Dudas comunes sobre la app</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
       </div>
     </section>
 
-    <section id="que-es" class="section">
+    <section id="que-es" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
       <h2>¿Qué es DIANUI 911?</h2>
       <p>
         DIANUI 911 es un programa de <strong>ayuda, orientación y educación nutricional</strong>
@@ -87,7 +137,8 @@
       </p>
     </section>
 
-    <section id="como-funciona" class="section">
+    <section id="como-funciona" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
       <h2>Cómo funciona (flujo rápido)</h2>
       <p class="muted">
         Selecciona lo que buscas y te sugerimos un camino: recetas, tips o contacto con un nutriólogo.
@@ -124,7 +175,8 @@
       </div>
     </section>
 
-    <section id="recetario" class="section">
+    <section id="recetario" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
       <h2>Recetario guiado</h2>
       <p class="muted">
         Elige una receta y ve marcando cada paso como listo conforme la vayas preparando.
@@ -140,7 +192,8 @@
       </p>
     </section>
 
-    <section id="nutriologos" class="section">
+    <section id="nutriologos" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
       <h2>Habla con un nutriólogo</h2>
       <p>
         La Fundación DIANUI A.C. va a poner a tu disposición nutriólogos y pasantes reales con
@@ -156,7 +209,8 @@
       </p>
     </section>
 
-    <section id="faq" class="section">
+    <section id="faq" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
       <h2>Preguntas frecuentes</h2>
       <p class="muted">
         Preguntas típicas para explicar qué es DIANUI 911 y cómo usar la app.
