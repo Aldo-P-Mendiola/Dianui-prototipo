@@ -19,6 +19,7 @@
       <a href="#que-es" data-target="que-es">¿Qué es?</a>
       <a href="#como-funciona" data-target="como-funciona">Cómo funciona</a>
       <a href="#recetario" data-target="recetario">Recetario</a>
+      <a href="#lactancia" data-target="lactancia">Lactancia</a>
       <a href="#nutriologos" data-target="nutriologos">Nutriólogos</a>
       <a href="#faq" data-target="faq">Preguntas</a>
     </nav>
@@ -87,6 +88,15 @@
           <span class="menuCard__text">
             <span class="menuCard__title">Recetario guiado</span>
             <span class="menuCard__desc muted tiny">8 recetas reales, paso a paso</span>
+          </span>
+          <span class="menuCard__arrow" aria-hidden="true">›</span>
+        </button>
+
+        <button type="button" class="menuCard" data-target="lactancia">
+          <span class="menuCard__icon" aria-hidden="true">🤱</span>
+          <span class="menuCard__text">
+            <span class="menuCard__title">Lactancia materna</span>
+            <span class="menuCard__desc muted tiny">Guía real: qué es, técnica, alimentación y beneficios</span>
           </span>
           <span class="menuCard__arrow" aria-hidden="true">›</span>
         </button>
@@ -189,6 +199,26 @@
       <p class="tiny muted">
         Recetas basadas en el Manual de Recetas Nutritivas con Ingredientes de Huerto,
         material de apoyo de la Fundación DIANUI A.C.
+      </p>
+    </section>
+
+    <section id="lactancia" class="section screen">
+      <button type="button" class="btn btn--ghost btn--sm screen__back" data-target="home">‹ Menú principal</button>
+      <h2>Lactancia materna</h2>
+      <p class="muted">
+        Información real sobre lactancia materna exclusiva: qué es, cómo es la leche,
+        técnica correcta, alimentación de la mamá y sus beneficios. Toca cada tarjeta
+        para ver el detalle completo.
+      </p>
+
+      <div id="lactanciaList" class="grid"></div>
+
+      <div class="divider"></div>
+      <p class="tiny muted">
+        Contenido basado únicamente en "Lactancia materna exclusiva" (Fundación DIANUI A.C.)
+        y "Recomendaciones sobre lactancia materna" del Comité de Lactancia Materna de la
+        Asociación Española de Pediatría (2012). Esta información es educativa y no
+        sustituye la valoración de un médico o nutriólogo.
       </p>
     </section>
 

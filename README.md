@@ -19,26 +19,40 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
 
 ## Qué hace hoy
 
+- **Navegación por pantallas** (`showScreen` en `app.js`): la app funciona como un
+  home con un menú de tarjetas grandes; solo una sección está visible a la vez
+  (divulgación progresiva) y cada sección tiene un botón para volver al menú.
+  Soporta enlaces directos por URL (`#recetario`, `#lactancia`, etc.).
 - **Módulo de contenido guiado**: convierte recetas y listas de tips en tarjetas de
   pasos que el usuario va marcando como "listo". El progreso se guarda en el
   navegador (`localStorage`), así que si cierra la pestaña y regresa, sigue donde
   se quedó. El mismo componente (`buildGuidedCard` en `app.js`) sirve para recetas,
-  hábitos, descanso y actividad física — y está listo para reutilizarse en salud
-  emocional cuando llegue el contenido.
+  hábitos, descanso, actividad física y lactancia — y está listo para reutilizarse
+  en salud emocional cuando llegue el contenido. Las recetas se muestran en modo
+  "carrusel" (un paso a la vez, con flechas y swipe); el resto se muestra como
+  checklist.
 - **Recetario guiado** (`#recetario`): 8 recetas reales tomadas del *Manual de
   Recetas Nutritivas con Ingredientes de Huerto* (material de apoyo de la
   Fundación DIANUI A.C.), cada una con ingredientes, pasos e información
-  nutricional aproximada.
+  nutricional aproximada. Cada receta se abre en un popup/modal.
 - **Hábitos, descanso y actividad física**: tips reales basados en las *Guías
   Alimentarias saludables y sostenibles para la población mexicana 2025*
   (SSA, INSP, UNICEF), Recomendaciones 6, 7, 9 y 10.
+- **Lactancia materna** (`#lactancia`): 6 tarjetas con información real sobre
+  lactancia materna exclusiva (qué es, composición de la leche, técnica y
+  agarre, alimentación de la mamá, beneficios, y cuándo consultar a un
+  profesional). Contenido generado únicamente a partir de dos documentos
+  proporcionados en `4.0 Red Aliados/Nuevo contenido`: *"Lactancia materna
+  exclusiva"* (Fundación DIANUI A.C.) y *"Recomendaciones sobre lactancia
+  materna"* del Comité de Lactancia Materna de la Asociación Española de
+  Pediatría (2012). No se agregó ningún dato que no viniera de esos documentos.
 - **Directorio de nutriólogos** (`#nutriologos`): componente flexible, listo para
   mostrar uno o varios nutriólogos con su contacto en cuanto la Fundación DIANUI
   A.C. los proporcione. Mientras tanto, muestra un mensaje honesto de "muy
   pronto".
 - **Flujo rápido** (`#como-funciona`): el selector original del prototipo, ahora
   conectado al contenido real y al módulo guiado.
-- **FAQ real** con preguntas y respuestas verificadas.
+- **FAQ real** con 13 preguntas y respuestas verificadas.
 
 ## Cómo agregar contenido nuevo
 

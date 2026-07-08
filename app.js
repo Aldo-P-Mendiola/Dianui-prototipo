@@ -299,6 +299,7 @@ function buildGuidedCard(item, opts) {
 
 const FUENTE_GUIA = "Guías Alimentarias saludables y sostenibles para la población mexicana 2025 (SSA, INSP, UNICEF)";
 const FUENTE_RECETAS = "Manual de Recetas Nutritivas con Ingredientes de Huerto — Tecnológico de Monterrey, material de apoyo de Fundación DIANUI A.C.";
+const FUENTE_LACTANCIA = "\"Lactancia materna exclusiva\" (Fundación DIANUI A.C., con base en la NOM-007-SSA2-2016) y \"Recomendaciones sobre lactancia materna\", Comité de Lactancia Materna de la Asociación Española de Pediatría (Martín Morales, 2012).";
 
 const CONTENT = {
   recetas: [
@@ -462,6 +463,97 @@ const CONTENT = {
   // el módulo de contenido guiado ya sabe renderizar cualquier
   // categoría con este mismo formato de datos.
   saludEmocional: [],
+
+  // Sección "Lactancia": contenido generado únicamente a partir de
+  // los dos documentos reales proporcionados por Dianui/Red Aliados
+  // ("Lactancia materna.pdf" y "Lactancia materna exclusiva DIANUI.pdf").
+  // No se agregó ningún dato que no viniera de esos documentos.
+  lactancia: [
+    {
+      id: "que-es-lactancia",
+      icono: "🤱",
+      titulo: "¿Qué es la lactancia materna exclusiva?",
+      resumen: "La base: qué es y cuánto tiempo se recomienda.",
+      pasos: [
+        "Es alimentar al bebé únicamente con leche materna, sin darle ningún otro alimento ni bebida.",
+        "Se recomienda de forma exclusiva durante los primeros 6 meses de vida del bebé.",
+        "Después de los 6 meses inicia la alimentación complementaria, sin dejar la leche materna.",
+        "Al cumplir 1 año, el bebé ya se va integrando poco a poco a la dieta familiar.",
+        "Idealmente, la lactancia debe iniciar inmediatamente después del nacimiento del bebé.",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+    {
+      id: "composicion-leche",
+      icono: "🍼",
+      titulo: "Cómo es la leche materna",
+      resumen: "De qué está hecha y cómo cambia con el tiempo.",
+      pasos: [
+        "Calostro (los primeros días): rico en proteínas, carbohidratos y anticuerpos, con bajo contenido de grasa; aporta unas 67 kcal por cada 100 ml.",
+        "Leche de transición: la que sigue al calostro, con más lactosa (el azúcar de la leche).",
+        "Leche madura: alrededor de 90% agua, además de carbohidratos, proteínas y grasas; aporta unas 75 kcal por cada 100 ml.",
+        "También contiene vitaminas y minerales que van cambiando según lo que el bebé necesita en cada etapa.",
+        "Por adaptarse tanto a las necesidades del bebé, se le conoce como \"oro líquido\".",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+    {
+      id: "tecnica-agarre",
+      icono: "🙆‍♀️",
+      titulo: "Postura y agarre correctos",
+      resumen: "Cómo acomodarse para lactar sin molestias.",
+      pasos: [
+        "Existen varias posturas válidas: sentada, acostada, de balón o de \"caballito\"; elige la que te resulte más cómoda.",
+        "El labio inferior del bebé debe abarcar la mayor parte de la areola, no solo el pezón.",
+        "La barbilla del bebé debe quedar pegada al pecho, con su cuerpo cerca del tuyo.",
+        "Un buen agarre ayuda a que no le entre aire al bebé y hace la toma más cómoda para ambos.",
+        "Para cambiar de pecho o terminar la toma, introduce suavemente tu dedo meñique en la comisura de los labios del bebé: esto rompe el vacío y evita lastimarte.",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+    {
+      id: "alimentacion-mama-lactando",
+      icono: "🥦",
+      titulo: "Alimentación de la mamá durante la lactancia",
+      resumen: "Qué favorece la leche y qué es mejor evitar.",
+      pasos: [
+        "Lleva una dieta variada, equilibrada y suficiente: procura de 5 a 6 comidas al día.",
+        "Toma entre 8 y 12 vasos de agua al día (unos 2.5 litros).",
+        "Incluye alimentos con ácido fólico (verduras, frijoles, lentejas, cereales fortificados), hierro (carne roja magra, aves, mariscos) y yodo (lácteos, huevo, sal yodada).",
+        "Si tu médico te indica suplemento de ácido fólico, el rango habitual es de 400 a 800 microgramos.",
+        "Evita el consumo excesivo de grasas saturadas, así como tabaco, alcohol y narcóticos.",
+        "Cuida también la cafeína y los alimentos que con más frecuencia causan alergia en el bebé: leche, cacahuate, huevo, pescado, crustáceos, frutos secos, trigo y soya.",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+    {
+      id: "beneficios-lactancia",
+      icono: "💚",
+      titulo: "Beneficios de la lactancia materna",
+      resumen: "Para el bebé, para la mamá, la familia y el ambiente.",
+      pasos: [
+        "Para el bebé: mejora su supervivencia, disminuye enfermedades, favorece el vínculo con la mamá y su desarrollo cognitivo.",
+        "Para la mamá a corto plazo: ayuda a disminuir el sangrado después del parto y fortalece el vínculo con el bebé.",
+        "Para la mamá a largo plazo: se asocia con menor riesgo de cáncer de mama y de útero, diabetes, problemas de colesterol, obesidad e infartos.",
+        "Para la economía familiar: no tiene costo (a diferencia de la fórmula) y reduce gastos en consultas médicas por infecciones.",
+        "Para el medio ambiente: se estima que 1 kg de fórmula cuesta al ambiente 4,700 litros de agua; lactar ahorra ese consumo de agua, energía y transporte.",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+    {
+      id: "cuando-consultar-lactancia",
+      icono: "⚠️",
+      titulo: "Cuándo consultar a un profesional",
+      resumen: "Situaciones que requieren orientación médica antes de decidir.",
+      pasos: [
+        "Si la mamá vive con VIH/SIDA o con el virus de leucemia humana.",
+        "Si la mamá depende de drogas, o está en tratamiento con radioterapia o quimioterapia.",
+        "Si el bebé tiene galactosemia (una condición que impide digerir la lactosa).",
+        "Ante cualquiera de estas situaciones, es indispensable el acompañamiento de un médico o nutriólogo antes de decidir cómo alimentar al bebé.",
+      ],
+      fuente: FUENTE_LACTANCIA,
+    },
+  ],
 };
 
 /* =========================
@@ -513,7 +605,7 @@ function renderNutriologos() {
    que la mamá lo pide.
    ========================= */
 
-const SCREEN_IDS = ["home", "que-es", "como-funciona", "recetario", "nutriologos", "faq"];
+const SCREEN_IDS = ["home", "que-es", "como-funciona", "recetario", "lactancia", "nutriologos", "faq"];
 
 function showScreen(id, opts) {
   opts = opts || {};
@@ -595,6 +687,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (recetarioGrid) {
     CONTENT.recetas.forEach((receta) => {
       recetarioGrid.appendChild(buildRecetaPreview(receta));
+    });
+  }
+
+  /* =========================
+     Lactancia
+     ========================= */
+  const lactanciaList = $("#lactanciaList");
+  if (lactanciaList) {
+    CONTENT.lactancia.forEach((tema) => {
+      lactanciaList.appendChild(buildLactanciaPreview(tema));
     });
   }
 
@@ -757,6 +859,41 @@ function buildRecetaPreview(receta) {
 }
 
 /* =========================
+   Vista previa de tema de lactancia (tarjeta pequeña + popup)
+   Mismo patrón que buildRecetaPreview: la tarjeta solo muestra
+   icono + título, y el contenido completo se abre en el modal
+   (divulgación progresiva: nada se ve hasta que se pide).
+   ========================= */
+
+function buildLactanciaPreview(tema) {
+  const wrap = el("div", { class: "tile recetaTile" });
+
+  const top = el("div", { class: "recetaTile__top" });
+  if (tema.icono) {
+    top.appendChild(el("div", { class: "recetaTile__icon", "aria-hidden": "true" }, tema.icono));
+  }
+  top.appendChild(el("h3", { class: "h5 recetaTile__titulo" }, escapeHtml(tema.titulo)));
+  wrap.appendChild(top);
+
+  if (tema.resumen) {
+    wrap.appendChild(el("p", { class: "tiny muted recetaTile__stepCount" }, escapeHtml(tema.resumen)));
+  }
+
+  const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver información");
+
+  let guidedCard = null;
+  toggleBtn.addEventListener("click", () => {
+    if (!guidedCard) {
+      guidedCard = buildGuidedCard({ ...tema, categoria: "lactancia" }, { modo: "lista", mostrarHeader: false });
+    }
+    openModal({ title: tema.titulo, icon: tema.icono, bodyNode: guidedCard });
+  });
+
+  wrap.appendChild(toggleBtn);
+  return wrap;
+}
+
+/* =========================
    Flujo: "Cómo funciona"
    ========================= */
 
@@ -876,6 +1013,10 @@ const FAQ = [
   {
     q: "¿Cómo sé que la información de la app es confiable?",
     a: "Cada receta y cada tip cita de dónde salió: las Guías Alimentarias saludables y sostenibles para la población mexicana 2025 (SSA, INSP, UNICEF) y los manuales de la Fundación DIANUI A.C. No se basa en opiniones sin respaldo.",
+  },
+  {
+    q: "¿La app tiene información sobre lactancia materna?",
+    a: "Sí. En la sección \"Lactancia materna\" encontrarás qué es la lactancia exclusiva, cómo es la leche materna, la técnica correcta, la alimentación recomendada para la mamá y sus beneficios, basado en material real de la Fundación DIANUI A.C. y de la Asociación Española de Pediatría.",
   },
 ];
 
