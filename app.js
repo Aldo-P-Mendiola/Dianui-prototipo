@@ -146,6 +146,18 @@ function buildGuidedCard(item, opts) {
 
   if (modo === "carrusel") {
     const carrusel = el("div", { class: "carrusel" });
+
+    if (item.foto) {
+      const photoWrap = el("div", { class: "carrusel__photoWrap" });
+      photoWrap.appendChild(el("img", {
+        src: `assets/recetas/${item.foto}`,
+        alt: `Foto de ${item.titulo}`,
+        class: "carrusel__photo",
+        loading: "lazy",
+      }));
+      carrusel.appendChild(photoWrap);
+    }
+
     carrusel.appendChild(el("p", { class: "tiny muted carrusel__hint" }, "Desliza hacia los lados o usa las flechas para avanzar."));
 
     const navRow = el("div", { class: "carrusel__nav" });
@@ -300,6 +312,9 @@ function buildGuidedCard(item, opts) {
 const FUENTE_GUIA = "Guías Alimentarias saludables y sostenibles para la población mexicana 2025 (SSA, INSP, UNICEF)";
 const FUENTE_RECETAS = "Manual de Recetas Nutritivas con Ingredientes de Huerto — Tecnológico de Monterrey, material de apoyo de Fundación DIANUI A.C.";
 const FUENTE_LACTANCIA = "\"Lactancia materna exclusiva\" (Fundación DIANUI A.C., con base en la NOM-007-SSA2-2016) y \"Recomendaciones sobre lactancia materna\", Comité de Lactancia Materna de la Asociación Española de Pediatría (Martín Morales, 2012).";
+const FUENTE_COMUNIDAD = "Contenido compartido en la comunidad de Dianui (Red Aliados).";
+const FUENTE_XIMENA = "Nutrióloga Ximena Hernández, contenido de la comunidad de Dianui (Red Aliados).";
+const FUENTE_VALERIA = "Receta compartida por @valeriaalanisv en la comunidad de Dianui (Red Aliados).";
 
 const CONTENT = {
   recetas: [
@@ -406,6 +421,184 @@ const CONTENT = {
       ],
       extra: "Porción sugerida: 1/2 vaso (0-2 años), 3/4 vaso (3-5 años), 1 vaso (6-12 años).",
       fuente: FUENTE_RECETAS,
+    },
+
+    // Recetas agregadas a partir de las fichas reales compartidas en la
+    // comunidad de Dianui (carpeta "4.0 Red Aliados/Nuevo contenido").
+    // Cada una conserva ingredientes e instrucciones tal como aparecen
+    // en el material original, con foto real recortada de la ficha.
+    {
+      id: "nidos-huevo-calabacita",
+      icono: "🥚",
+      foto: "nidos-huevo-calabacita.jpg",
+      titulo: "Nidos de huevo con calabacita y queso",
+      resumen: "Desayuno ligero con calabacita, huevo y queso.",
+      pasos: [
+        "Corta 1 calabacita grande con un cortador de espiral (o rállala en tiras delgadas).",
+        "Agrega 1/2 taza de queso mozzarella (o el de tu preferencia), sal y pimienta al gusto.",
+        "Mezcla muy bien y en un sartén forma unos \"nidos\" con la calabacita.",
+        "En medio de cada nido agrega 1 huevo.",
+        "Agrega pimienta y cocina unos minutos, tapado, hasta que el huevo cuaje a tu gusto.",
+      ],
+      fuente: FUENTE_COMUNIDAD,
+    },
+    {
+      id: "carlota-fresas-crema",
+      icono: "🍓",
+      foto: "carlota-fresas-crema.jpg",
+      titulo: "Carlota estilo fresas con crema",
+      resumen: "Postre fresco por capas, sin azúcar añadida.",
+      pasos: [
+        "Mezcla yogurt griego sin azúcar con vainilla y el endulzante de tu elección hasta lograr una mezcla homogénea.",
+        "En un vaso o bowl, pon una capa de galletas María.",
+        "Agrega una capa de la mezcla de yogurt y una capa de fresas (1 taza) picadas.",
+        "Repite las capas necesarias hasta llenar el vaso.",
+        "Encima pon más yogurt griego y galletas María troceadas; mete al refrigerador por unas horas y disfruta.",
+      ],
+      fuente: FUENTE_COMUNIDAD,
+    },
+    {
+      id: "pollo-estilo-chino",
+      icono: "🥡",
+      foto: "pollo-estilo-chino.jpg",
+      titulo: "Pollo estilo chino",
+      resumen: "Salteado de pollo y verdura estilo asiático.",
+      pasos: [
+        "En un sartén a fuego medio agrega aceite de ajonjolí u oliva, cebolla en cuadros medianos y ajo finamente picado.",
+        "Cocina unos minutos y agrega 700 g de pechuga de pollo cortada en cubos medianos.",
+        "Añade 4 zanahorias y 1 chayote (o calabaza) ya cortados.",
+        "Agrega 3/4 taza de salsa de soya, 1/4 taza de miel de abeja (o agave) y 1/2 cdita de maicena diluida en 1/3 taza de agua; mezcla, tapa y cocina unos 4 minutos.",
+        "Por último agrega 1/2 brócoli, tapa de nuevo y cocina hasta que la verdura quede a tu gusto.",
+      ],
+      fuente: FUENTE_COMUNIDAD,
+    },
+    {
+      id: "avocado-toast",
+      icono: "🥑",
+      foto: "avocado-toast.jpg",
+      titulo: "Avocado toast",
+      resumen: "Para 4 personas. Receta compartida por @valeriaalanisv.",
+      pasos: [
+        "Tuesta 2 rebanadas de pan integral a tu gusto (o déjalo blandito).",
+        "Cocina 2 huevos a tu gusto: estrellado o duro.",
+        "Unta 1/2 aguacate en los panes ya tostados.",
+        "Agrega el huevo encima del pan con aguacate; sazona con sal y pimienta al gusto.",
+        "Al final agrega jitomate cherry cortado a la mitad y 1 cdita de aceite de oliva.",
+      ],
+      fuente: FUENTE_VALERIA,
+    },
+    {
+      id: "tacos-pollo-guisado",
+      icono: "🌯",
+      foto: "tacos-pollo-guisado.jpg",
+      titulo: "Tarde de tacos de pollo guisado",
+      resumen: "Por la nutrióloga Ximena Hernández.",
+      pasos: [
+        "En un sartén, sazona media cebolla picada, dos tomates rojos picados y siete ramas de cilantro picado.",
+        "Cuando esté sazonado, agrega media pechuga de pollo y mezcla bien hasta obtener el guisado.",
+        "Sobre tortilla de maíz, coloca el pollo guisado y enróllalos.",
+        "Llévalos a la freidora de aire hasta que estén crujientes.",
+        "Prepara tu salsa favorita para acompañar, con queso y crema baja en grasa al gusto.",
+      ],
+      fuente: FUENTE_XIMENA,
+    },
+    {
+      id: "galletas-arroz-aguacate",
+      icono: "🍘",
+      foto: "galletas-arroz-aguacate.jpg",
+      titulo: "Galletas de arroz y quinoa con aguacate y queso panela",
+      resumen: "Snack rápido y crujiente.",
+      pasos: [
+        "En cada galleta de arroz inflado unta aguacate.",
+        "Agrega 30 g de queso panela por galleta.",
+        "Agrega jitomate cherry al gusto.",
+      ],
+      fuente: FUENTE_COMUNIDAD,
+    },
+    {
+      id: "smoothie-frutos-rojos-comunidad",
+      icono: "🍓",
+      foto: "smoothie-frutos-rojos.jpg",
+      titulo: "Smoothie de frutos rojos",
+      resumen: "Opción de desayuno rico y rápido. Receta de @valeriaalanisv.",
+      pasos: [
+        "En la licuadora mezcla berries o fresas, 1 vaso de leche y, si quieres, 1 scoop de proteína en polvo.",
+        "Agrega chía para que la mezcla tome una consistencia tipo pudín.",
+        "Sirve sobre yogurt griego y agrega la mezcla; de topping puedes usar almendras o nueces.",
+      ],
+      fuente: FUENTE_VALERIA,
+    },
+    {
+      id: "paletas-clight",
+      icono: "🧊",
+      foto: "paletas-clight.jpg",
+      titulo: "Paletas deliciosas",
+      resumen: "Alternativa fría y sin azúcar añadida para los peques.",
+      pasos: [
+        "Diluye un sobre de agua de sabor sin azúcar (del sabor que prefieras) en medio litro de agua.",
+        "Vierte en moldes para paleta.",
+        "Congela hasta que cuajen; no necesitan endulzante extra.",
+      ],
+      fuente: FUENTE_COMUNIDAD,
+    },
+    {
+      id: "bites-yogurt-frutos-rojos",
+      icono: "🫐",
+      foto: "bites-yogurt-frutos-rojos.jpg",
+      titulo: "Bites de yogurt con frutos rojos",
+      resumen: "Snack congelado para toda la semana. Receta de @valeriaalanisv.",
+      pasos: [
+        "En un bowl aplasta moras junto con una cucharada de chía y miel, hasta lograr una mezcla tipo mermelada.",
+        "Mete la mezcla al refrigerador durante unas 2 horas.",
+        "Coloca yogurt griego en un bowl, toma la mezcla de frutos rojos ya fría y cúbrela con el yogurt.",
+        "Mete al congelador unas 2 horas más y disfruta.",
+      ],
+      fuente: FUENTE_VALERIA,
+    },
+    {
+      id: "tacos-atun",
+      icono: "🐟",
+      foto: "tacos-atun.jpg",
+      titulo: "Tacos carnita de atún",
+      resumen: "Cena ligera, alta en proteína, sin grasas trans. Nutrióloga Ximena Hernández.",
+      pasos: [
+        "Calienta 1 cdita de ghee (mantequilla clarificada) y saltea 1 sobre de atún bajo en sodio con 1 cdita de paprika.",
+        "Calienta 2 tortillas de nopal.",
+        "Sirve el atún sobre las tortillas de nopal.",
+        "Agrega guacamole, cilantro y cebolla al gusto, y unas gotas de limón.",
+      ],
+      extra: "Aporta unos 20 g de proteína por cada 2 tacos.",
+      fuente: FUENTE_XIMENA,
+    },
+    {
+      id: "pan-frances-frutos-rojos",
+      icono: "🍞",
+      foto: "pan-frances-frutos-rojos.jpg",
+      titulo: "Pan francés con frutos rojos",
+      resumen: "Desayuno dulce sin azúcar añadida. Nutrióloga Ximena Hernández.",
+      pasos: [
+        "Mezcla 1 huevo, 1 sobre de stevia, 1 pizca de canela molida y un chorrito de vainilla; remoja ahí 2 rebanadas de pan.",
+        "En un sartén, con media cucharadita de mantequilla, cocina el pan remojado.",
+        "Desinfecta bien un puño de frutos rojos (mora azul, frambuesa, zarzamora y fresa) y combínalos.",
+        "Sirve el pan ya cocido con los frutos rojos, 2 cdas de queso cottage, 1 cda de miel de agave y 1 cda de almendras fileteadas.",
+        "Acompaña con té verde o jugo verde, el de tu preferencia.",
+      ],
+      fuente: FUENTE_XIMENA,
+    },
+    {
+      id: "tacos-carne-saludables",
+      icono: "🌮",
+      foto: "tacos-carne-saludables.jpg",
+      titulo: "Tacos de carne saludables",
+      resumen: "Alimento completo: carbohidratos, proteínas y grasas. Nutrióloga Ximena Hernández.",
+      pasos: [
+        "Cocina 225 g de carne molida magra con 65 g de jitomate, 40 g de cebolla y 20 g de cilantro picados, y 1 pizca de sal.",
+        "Calienta 3 tortillas de nopal.",
+        "Sirve la carne sobre las tortillas de nopal.",
+        "Acompaña con salsa roja, limón y guacamole al gusto.",
+      ],
+      extra: "Aporta 494 kcal en total; la tortilla de nopal ayuda a reducir la glucosa en sangre.",
+      fuente: FUENTE_XIMENA,
     },
   ],
 
@@ -693,12 +886,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      Lactancia
      ========================= */
-  const lactanciaList = $("#lactanciaList");
-  if (lactanciaList) {
-    CONTENT.lactancia.forEach((tema) => {
-      lactanciaList.appendChild(buildLactanciaPreview(tema));
-    });
-  }
+  renderLactanciaPath();
 
   /* =========================
      Directorio de nutriólogos
@@ -764,7 +952,7 @@ function closeActiveModal() {
   if (activeModalClose) activeModalClose();
 }
 
-function openModal({ title, icon, bodyNode }) {
+function openModal({ title, icon, bodyNode, onClose }) {
   closeActiveModal();
 
   const overlay = el("div", { class: "modalOverlay" });
@@ -800,6 +988,7 @@ function openModal({ title, icon, bodyNode }) {
     document.body.classList.remove("noScroll");
     document.removeEventListener("keydown", onKeydown);
     if (activeModalClose === close) activeModalClose = null;
+    if (typeof onClose === "function") onClose();
   }
 
   overlay.addEventListener("click", (e) => {
@@ -820,6 +1009,17 @@ function openModal({ title, icon, bodyNode }) {
 
 function buildRecetaPreview(receta) {
   const wrap = el("div", { class: "tile recetaTile" });
+
+  if (receta.foto) {
+    const photoWrap = el("div", { class: "recetaTile__photoWrap" });
+    photoWrap.appendChild(el("img", {
+      src: `assets/recetas/${receta.foto}`,
+      alt: `Foto de ${receta.titulo}`,
+      class: "recetaTile__photo",
+      loading: "lazy",
+    }));
+    wrap.appendChild(photoWrap);
+  }
 
   const top = el("div", { class: "recetaTile__top" });
   if (receta.icono) {
@@ -859,38 +1059,84 @@ function buildRecetaPreview(receta) {
 }
 
 /* =========================
-   Vista previa de tema de lactancia (tarjeta pequeña + popup)
-   Mismo patrón que buildRecetaPreview: la tarjeta solo muestra
-   icono + título, y el contenido completo se abre en el modal
-   (divulgación progresiva: nada se ve hasta que se pide).
+   Ruta de lecciones de Lactancia (estilo Duolingo/Sololearn)
+   En vez de una lista de tarjetas, cada tema es un nodo circular
+   grande en un camino en zigzag. El nodo cambia de color según el
+   avance guardado en localStorage: sin empezar, en progreso o
+   completo. Al tocarlo se abre el mismo popup con el checklist.
    ========================= */
 
-function buildLactanciaPreview(tema) {
-  const wrap = el("div", { class: "tile recetaTile" });
+function lactanciaTemaEstado(tema) {
+  const done = getProgress(`lactancia:${tema.id}`, tema.pasos.length);
+  const n = done.filter(Boolean).length;
+  if (n === 0) return "pendiente";
+  if (n === tema.pasos.length) return "completo";
+  return "progreso";
+}
 
-  const top = el("div", { class: "recetaTile__top" });
-  if (tema.icono) {
-    top.appendChild(el("div", { class: "recetaTile__icon", "aria-hidden": "true" }, tema.icono));
-  }
-  top.appendChild(el("h3", { class: "h5 recetaTile__titulo" }, escapeHtml(tema.titulo)));
-  wrap.appendChild(top);
+function renderLactanciaPath() {
+  const progressRoot = $("#lactanciaProgress");
+  const pathRoot = $("#lactanciaList");
+  if (!pathRoot) return;
 
-  if (tema.resumen) {
-    wrap.appendChild(el("p", { class: "tiny muted recetaTile__stepCount" }, escapeHtml(tema.resumen)));
-  }
+  function refresh() {
+    const temas = CONTENT.lactancia;
+    const estados = temas.map(lactanciaTemaEstado);
+    const completos = estados.filter((e) => e === "completo").length;
 
-  const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver información");
-
-  let guidedCard = null;
-  toggleBtn.addEventListener("click", () => {
-    if (!guidedCard) {
-      guidedCard = buildGuidedCard({ ...tema, categoria: "lactancia" }, { modo: "lista", mostrarHeader: false });
+    if (progressRoot) {
+      const pct = temas.length ? Math.round((completos / temas.length) * 100) : 0;
+      progressRoot.innerHTML = "";
+      const label = el("p", { class: "tiny muted courseProgress__label" },
+        completos === temas.length
+          ? `¡Completaste las ${temas.length} lecciones! 🎉`
+          : `${completos} de ${temas.length} lecciones completas`
+      );
+      const bar = el("div", { class: "progressBar courseProgress__bar" });
+      const fill = el("div", { class: "progressBar__fill" });
+      fill.style.width = pct + "%";
+      bar.appendChild(fill);
+      progressRoot.appendChild(label);
+      progressRoot.appendChild(bar);
     }
-    openModal({ title: tema.titulo, icon: tema.icono, bodyNode: guidedCard });
-  });
 
-  wrap.appendChild(toggleBtn);
-  return wrap;
+    pathRoot.innerHTML = "";
+    temas.forEach((tema, idx) => {
+      const estado = estados[idx];
+      const row = el("div", { class: `lessonPath__row lessonPath__row--${idx % 2 === 0 ? "left" : "right"}` });
+
+      const node = el("button", {
+        type: "button",
+        class: `lessonNode lessonNode--${estado}`,
+        "aria-label": `${tema.titulo} (${estado === "completo" ? "completo" : estado === "progreso" ? "en progreso" : "sin empezar"})`,
+      });
+      node.appendChild(el("span", { class: "lessonNode__icon", "aria-hidden": "true" }, tema.icono || "🤱"));
+      if (estado === "completo") {
+        node.appendChild(el("span", { class: "lessonNode__badge", "aria-hidden": "true" }, "✓"));
+      }
+
+      let guidedCard = null;
+      node.addEventListener("click", () => {
+        if (!guidedCard) {
+          guidedCard = buildGuidedCard({ ...tema, categoria: "lactancia" }, { modo: "lista", mostrarHeader: false });
+        }
+        openModal({
+          title: tema.titulo,
+          icon: tema.icono,
+          bodyNode: guidedCard,
+          onClose: refresh,
+        });
+      });
+
+      const label = el("p", { class: "lessonPath__label tiny" }, escapeHtml(tema.titulo));
+
+      row.appendChild(node);
+      row.appendChild(label);
+      pathRoot.appendChild(row);
+    });
+  }
+
+  refresh();
 }
 
 /* =========================

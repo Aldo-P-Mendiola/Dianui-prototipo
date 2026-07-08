@@ -31,21 +31,28 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   en salud emocional cuando llegue el contenido. Las recetas se muestran en modo
   "carrusel" (un paso a la vez, con flechas y swipe); el resto se muestra como
   checklist.
-- **Recetario guiado** (`#recetario`): 8 recetas reales tomadas del *Manual de
+- **Recetario guiado** (`#recetario`): 20 recetas reales. 8 vienen del *Manual de
   Recetas Nutritivas con Ingredientes de Huerto* (material de apoyo de la
-  Fundación DIANUI A.C.), cada una con ingredientes, pasos e información
-  nutricional aproximada. Cada receta se abre en un popup/modal.
+  Fundación DIANUI A.C.). Las otras 12 se agregaron a partir de las fichas de
+  receta reales de la comunidad de Dianui (`4.0 Red Aliados/Nuevo contenido`,
+  varias de la nutrióloga Ximena Hernández y de @valeriaalanisv), cada una con
+  su foto recortada de la ficha original (`assets/recetas/`). Cada receta se
+  abre en un popup/modal con carrusel de pasos.
 - **Hábitos, descanso y actividad física**: tips reales basados en las *Guías
   Alimentarias saludables y sostenibles para la población mexicana 2025*
   (SSA, INSP, UNICEF), Recomendaciones 6, 7, 9 y 10.
-- **Lactancia materna** (`#lactancia`): 6 tarjetas con información real sobre
-  lactancia materna exclusiva (qué es, composición de la leche, técnica y
+- **Lactancia materna** (`#lactancia`): 6 lecciones cortas con información real
+  sobre lactancia materna exclusiva (qué es, composición de la leche, técnica y
   agarre, alimentación de la mamá, beneficios, y cuándo consultar a un
-  profesional). Contenido generado únicamente a partir de dos documentos
-  proporcionados en `4.0 Red Aliados/Nuevo contenido`: *"Lactancia materna
-  exclusiva"* (Fundación DIANUI A.C.) y *"Recomendaciones sobre lactancia
-  materna"* del Comité de Lactancia Materna de la Asociación Española de
-  Pediatría (2012). No se agregó ningún dato que no viniera de esos documentos.
+  profesional), presentadas como una ruta de lecciones estilo Duolingo/Sololearn
+  (`renderLactanciaPath` en `app.js`): cada tema es un nodo circular que cambia
+  de color según el avance guardado (sin empezar / en progreso / completo), con
+  una barra de progreso general arriba. Contenido generado únicamente a partir
+  de dos documentos proporcionados en `4.0 Red Aliados/Nuevo contenido`:
+  *"Lactancia materna exclusiva"* (Fundación DIANUI A.C.) y *"Recomendaciones
+  sobre lactancia materna"* del Comité de Lactancia Materna de la Asociación
+  Española de Pediatría (2012). No se agregó ningún dato que no viniera de esos
+  documentos.
 - **Directorio de nutriólogos** (`#nutriologos`): componente flexible, listo para
   mostrar uno o varios nutriólogos con su contacto en cuanto la Fundación DIANUI
   A.C. los proporcione. Mientras tanto, muestra un mensaje honesto de "muy
