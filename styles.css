@@ -745,7 +745,7 @@
   }
   .ingredientesList__item{
     position: relative;
-    padding: 10px 14px 10px 30px;
+    padding: 10px 14px 12px 30px;
     border: 1px solid var(--border);
     border-radius: 12px;
     background: color-mix(in oklab, var(--panel) 90%, transparent);
@@ -754,12 +754,17 @@
     content:"";
     position: absolute;
     left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 16px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: var(--accent);
+  }
+  .ingredientesList__texto{ margin: 0 0 6px; }
+  .ingredientesList__meta{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .modalDialog__body .guiado__card{

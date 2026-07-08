@@ -316,6 +316,95 @@ const FUENTE_COMUNIDAD = "Contenido compartido en la comunidad de Dianui (Red Al
 const FUENTE_XIMENA = "Nutrióloga Ximena Hernández, contenido de la comunidad de Dianui (Red Aliados).";
 const FUENTE_VALERIA = "Receta compartida por @valeriaalanisv en la comunidad de Dianui (Red Aliados).";
 
+/* =========================
+   Guía de compra por ingrediente (referencia)
+   Marca sugerida, dónde conseguirlo y precio aproximado en pesos
+   mexicanos. Son valores de referencia general, NO precios en
+   tiempo real: pueden variar según tienda, temporada y ciudad.
+   Se buscan por palabra clave dentro del texto del ingrediente.
+   Ordenadas de la palabra clave más específica a la más general,
+   para que "queso panela" se detecte antes que "queso".
+   ========================= */
+
+const GUIA_COMPRA = [
+  ["queso panela", { marca: "Alpura o Lala", lugar: "supermercado", precio: "≈ $95 MXN/kg" }],
+  ["queso mozzarella", { marca: "Lala o Chilchota", lugar: "supermercado", precio: "≈ $110 MXN/kg" }],
+  ["queso cottage", { marca: "Danone o Alpura", lugar: "supermercado", precio: "≈ $40 MXN (bote 220 g)" }],
+  ["queso fresco", { marca: "Fud o Chilchota", lugar: "mercado o supermercado", precio: "≈ $90 MXN/kg" }],
+  ["aceite de oliva", { marca: "Carbonell", lugar: "supermercado", precio: "≈ $140 MXN (500 ml)" }],
+  ["aceite de ajonjolí", { marca: "La Costeña", lugar: "supermercado", precio: "≈ $60 MXN" }],
+  ["salsa de soya", { marca: "La Costeña o Kikkoman", lugar: "supermercado", precio: "≈ $40 MXN" }],
+  ["miel de agave", { marca: "Trumío", lugar: "supermercado", precio: "≈ $85 MXN (frasco)" }],
+  ["miel de abeja", { marca: "Miel Carlota (o miel local de mercado)", lugar: "mercado o supermercado", precio: "≈ $90 MXN (500 g)" }],
+  ["yogurt griego", { marca: "Lala Griego o Danone Oikos", lugar: "supermercado", precio: "≈ $35 MXN" }],
+  ["galletas maría", { marca: "Gamesa", lugar: "supermercado", precio: "≈ $25 MXN (paquete)" }],
+  ["galletas de arroz", { marca: "OKKO o Sanissimo", lugar: "supermercado", precio: "≈ $55 MXN (paquete)" }],
+  ["pan integral", { marca: "Bimbo Integral", lugar: "supermercado", precio: "≈ $45 MXN" }],
+  ["tortillas de nopal", { marca: "Tortinopal (tiendas naturistas)", lugar: "tienda naturista o mercado", precio: "≈ $45 MXN (paquete)" }],
+  ["tortillas de maíz", { marca: "Tortillería local o Maseca", lugar: "tortillería", precio: "≈ $20 MXN/kg" }],
+  ["pechuga de pollo", { marca: "Bachoco o Pilgrim's", lugar: "supermercado", precio: "≈ $100 MXN/kg" }],
+  ["pollo deshebrado", { marca: "Bachoco o Pilgrim's", lugar: "supermercado", precio: "≈ $100 MXN/kg" }],
+  ["carne molida", { marca: "A granel (res, magra)", lugar: "mercado o carnicería", precio: "≈ $140 MXN/kg" }],
+  ["atún", { marca: "Dolores o Herdez (bajo en sodio)", lugar: "supermercado", precio: "≈ $25 MXN (lata)" }],
+  ["jitomate cherry", { marca: "A granel", lugar: "mercado o supermercado", precio: "≈ $40 MXN/caja" }],
+  ["jitomate", { marca: "A granel", lugar: "mercado", precio: "≈ $25 MXN/kg" }],
+  ["tomate", { marca: "A granel", lugar: "mercado", precio: "≈ $25 MXN/kg" }],
+  ["cebolla", { marca: "A granel", lugar: "mercado", precio: "≈ $20 MXN/kg" }],
+  ["cilantro", { marca: "A granel", lugar: "mercado", precio: "≈ $8 MXN/manojo" }],
+  ["zanahoria", { marca: "A granel", lugar: "mercado", precio: "≈ $18 MXN/kg" }],
+  ["calabacita", { marca: "A granel", lugar: "mercado", precio: "≈ $20 MXN/kg" }],
+  ["calabaza", { marca: "A granel", lugar: "mercado", precio: "≈ $20 MXN/kg" }],
+  ["papa", { marca: "A granel", lugar: "mercado", precio: "≈ $22 MXN/kg" }],
+  ["pepino", { marca: "A granel", lugar: "mercado", precio: "≈ $18 MXN/kg" }],
+  ["limón", { marca: "A granel", lugar: "mercado", precio: "≈ $20 MXN/kg" }],
+  ["orégano", { marca: "McCormick", lugar: "supermercado", precio: "≈ $35 MXN (frasco chico)" }],
+  ["espinaca", { marca: "A granel", lugar: "mercado", precio: "≈ $25 MXN/manojo" }],
+  ["huevo", { marca: "San Juan o Bachoco", lugar: "supermercado", precio: "≈ $40 MXN/docena" }],
+  ["avena", { marca: "Quaker", lugar: "supermercado", precio: "≈ $45 MXN (500 g)" }],
+  ["chícharo", { marca: "La Huerta (congelado) o a granel", lugar: "supermercado", precio: "≈ $35 MXN (bolsa)" }],
+  ["elote", { marca: "A granel", lugar: "mercado", precio: "≈ $9 MXN/pieza" }],
+  ["lechuga", { marca: "A granel", lugar: "mercado", precio: "≈ $18 MXN/pieza" }],
+  ["aguacate", { marca: "A granel (Hass)", lugar: "mercado", precio: "≈ $50 MXN/kg" }],
+  ["fresa", { marca: "A granel o Driscoll's", lugar: "mercado o supermercado", precio: "≈ $40 MXN/caja" }],
+  ["leche", { marca: "Lala o Alpura", lugar: "supermercado", precio: "≈ $25 MXN/L" }],
+  ["vainilla", { marca: "McCormick", lugar: "supermercado", precio: "≈ $40 MXN (frasco chico)" }],
+  ["stevia", { marca: "Stevia Splenda o Truvia", lugar: "supermercado", precio: "≈ $95 MXN (caja)" }],
+  ["endulzante", { marca: "Stevia Splenda o Truvia", lugar: "supermercado", precio: "≈ $95 MXN (caja)" }],
+  ["chayote", { marca: "A granel", lugar: "mercado", precio: "≈ $18 MXN/kg" }],
+  ["brócoli", { marca: "A granel", lugar: "mercado", precio: "≈ $30 MXN/kg" }],
+  ["maicena", { marca: "Maizena", lugar: "supermercado", precio: "≈ $20 MXN" }],
+  ["frutos rojos", { marca: "La Huerta (congelados)", lugar: "supermercado", precio: "≈ $65 MXN (bolsa)" }],
+  ["berries", { marca: "La Huerta (congelados)", lugar: "supermercado", precio: "≈ $65 MXN (bolsa)" }],
+  ["moras", { marca: "A granel o La Huerta", lugar: "mercado o supermercado", precio: "≈ $35 MXN/caja" }],
+  ["proteína en polvo", { marca: "Nutrisa o Gold Standard", lugar: "tienda naturista o supermercado", precio: "≈ $700 MXN (bote grande, rinde varias semanas)" }],
+  ["chía", { marca: "Naturally", lugar: "supermercado o tienda naturista", precio: "≈ $40 MXN (250 g)" }],
+  ["almendras", { marca: "Nature's Heart", lugar: "supermercado", precio: "≈ $95 MXN (200 g)" }],
+  ["ghee", { marca: "Ghee Pura Vida", lugar: "tienda naturista", precio: "≈ $180 MXN (frasco)" }],
+  ["paprika", { marca: "McCormick", lugar: "supermercado", precio: "≈ $35 MXN" }],
+  ["agua de sabor sin azúcar", { marca: "Clight", lugar: "supermercado", precio: "≈ $8 MXN/sobre" }],
+  ["canela", { marca: "McCormick", lugar: "supermercado", precio: "≈ $30 MXN" }],
+  ["nopal", { marca: "A granel", lugar: "mercado", precio: "≈ $15 MXN/kg" }],
+  ["sal", { marca: "La Fina", lugar: "supermercado", precio: "≈ $12 MXN" }],
+];
+
+function buscarGuiaCompra(textoIngrediente) {
+  const t = textoIngrediente.toLowerCase();
+  for (const [kw, info] of GUIA_COMPRA) {
+    const patron = kw.includes(" ")
+      ? kw // frase de varias palabras: basta con que aparezca tal cual
+      : null;
+    if (patron) {
+      if (t.includes(patron)) return info;
+    } else {
+      // palabra suelta: límite de palabra (para no confundir "sal"
+      // dentro de "salsa") + una "s" final opcional (singular/plural).
+      const re = new RegExp(`\\b${kw}s?\\b`, "i");
+      if (re.test(t)) return info;
+    }
+  }
+  return null;
+}
+
 const CONTENT = {
   recetas: [
     {
@@ -1229,10 +1318,24 @@ function buildRecetaModalBody(receta) {
   }
 
   ingredientesView.appendChild(el("h4", { class: "h5 recetaModal__subtitle" }, "Ingredientes que necesitas"));
+  ingredientesView.appendChild(el("p", { class: "tiny muted" },
+    "Con marca sugerida, dónde conseguirlo y precio aproximado. Son valores de referencia, no precios en tiempo real: pueden variar según tienda, temporada y ciudad."
+  ));
 
   const ul = el("ul", { class: "ingredientesList" });
   (receta.ingredientes || []).forEach((ing) => {
-    ul.appendChild(el("li", { class: "ingredientesList__item" }, escapeHtml(ing)));
+    const li = el("li", { class: "ingredientesList__item" });
+    li.appendChild(el("p", { class: "ingredientesList__texto" }, escapeHtml(ing)));
+
+    const info = buscarGuiaCompra(ing);
+    if (info) {
+      const meta = el("div", { class: "ingredientesList__meta" });
+      meta.appendChild(el("span", { class: "chip tiny" }, `🏷️ ${escapeHtml(info.marca)}`));
+      meta.appendChild(el("span", { class: "chip tiny" }, `📍 ${escapeHtml(info.lugar)}`));
+      meta.appendChild(el("span", { class: "chip tiny" }, `💲 ${escapeHtml(info.precio)}`));
+      li.appendChild(meta);
+    }
+    ul.appendChild(li);
   });
   ingredientesView.appendChild(ul);
 
@@ -1241,7 +1344,7 @@ function buildRecetaModalBody(receta) {
   }
 
   ingredientesView.appendChild(el("p", { class: "tiny muted recetaModal__tip" },
-    "Tip: revisa primero qué ya tienes en casa. Para lo demás, un mercado local o tianguis suele tener las frutas y verduras más frescas y a mejor precio que el supermercado; si compras algo empacado, elige el que tenga menos sellos de advertencia."
+    "Tip: revisa primero qué ya tienes en casa. Para frutas y verduras frescas, un mercado local o tianguis suele tener mejor precio que el supermercado; si compras algo empacado, elige el que tenga menos sellos de advertencia."
   ));
 
   const startBtn = el("button", { type: "button", class: "btn btn--primary recetaModal__start" }, "Comenzar receta →");
