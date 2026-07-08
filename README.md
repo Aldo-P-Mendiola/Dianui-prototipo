@@ -37,7 +37,9 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   receta reales de la comunidad de Dianui (`4.0 Red Aliados/Nuevo contenido`,
   varias de la nutrióloga Ximena Hernández y de @valeriaalanisv), cada una con
   su foto recortada de la ficha original (`assets/recetas/`). Cada receta se
-  abre en un popup/modal con carrusel de pasos.
+  abre en un popup/modal que primero muestra los ingredientes que se
+  necesitan (con un tip general de dónde conseguirlos más frescos y
+  baratos) y, al presionar "Comenzar receta", pasa al carrusel de pasos.
 - **Hábitos, descanso y actividad física**: tips reales basados en las *Guías
   Alimentarias saludables y sostenibles para la población mexicana 2025*
   (SSA, INSP, UNICEF), Recomendaciones 6, 7, 9 y 10.
@@ -47,7 +49,9 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   profesional), presentadas como una ruta de lecciones estilo Duolingo/Sololearn
   (`renderLactanciaPath` en `app.js`): cada tema es un nodo circular que cambia
   de color según el avance guardado (sin empezar / en progreso / completo), con
-  una barra de progreso general arriba. Contenido generado únicamente a partir
+  una barra de progreso general arriba. Cada lección se muestra en formato de
+  slides (un paso a la vez, igual que las recetas), así la lección se va
+  completando conforme avanzas. Contenido generado únicamente a partir
   de dos documentos proporcionados en `4.0 Red Aliados/Nuevo contenido`:
   *"Lactancia materna exclusiva"* (Fundación DIANUI A.C.) y *"Recomendaciones
   sobre lactancia materna"* del Comité de Lactancia Materna de la Asociación

@@ -147,7 +147,7 @@ function buildGuidedCard(item, opts) {
   if (modo === "carrusel") {
     const carrusel = el("div", { class: "carrusel" });
 
-    if (item.foto) {
+    if (item.foto && !opts.ocultarFoto) {
       const photoWrap = el("div", { class: "carrusel__photoWrap" });
       photoWrap.appendChild(el("img", {
         src: `assets/recetas/${item.foto}`,
@@ -323,6 +323,13 @@ const CONTENT = {
       icono: "🥕",
       titulo: "Crema de zanahoria y calabaza",
       resumen: "120 kcal por porción · 2 g de proteína",
+      ingredientes: [
+        "2 zanahorias medianas",
+        "1 taza de calabaza",
+        "1 papa pequeña",
+        "2 tazas de agua o caldo",
+        "1 cucharadita de aceite de oliva",
+      ],
       pasos: [
         "Lava y corta 2 zanahorias medianas, 1 taza de calabaza y 1 papa pequeña.",
         "Cuece las verduras en 2 tazas de agua o caldo con 1 cucharadita de aceite de oliva hasta que estén suaves.",
@@ -336,6 +343,13 @@ const CONTENT = {
       icono: "🥗",
       titulo: "Ensalada de pepino y tomate",
       resumen: "80 kcal por porción · 2 g de proteína",
+      ingredientes: [
+        "1 pepino",
+        "2 tomates",
+        "Jugo de limón",
+        "1 cucharadita de aceite de oliva",
+        "Orégano al gusto",
+      ],
       pasos: [
         "Corta 1 pepino y 2 tomates en cubos.",
         "Mezcla con jugo de limón, 1 cucharadita de aceite de oliva y orégano al gusto.",
@@ -349,6 +363,12 @@ const CONTENT = {
       icono: "🥬",
       titulo: "Tortitas de espinaca",
       resumen: "150 kcal por porción · 8 g de proteína",
+      ingredientes: [
+        "1 taza de espinaca picada",
+        "1 huevo",
+        "2 cucharadas de avena",
+        "30 g de queso fresco",
+      ],
       pasos: [
         "Mezcla 1 taza de espinaca picada, 1 huevo, 2 cucharadas de avena y 30 g de queso fresco.",
         "Forma pequeñas tortitas con la mezcla.",
@@ -362,6 +382,13 @@ const CONTENT = {
       icono: "🍚",
       titulo: "Arroz con verduras",
       resumen: "190 kcal por porción · 5 g de proteína",
+      ingredientes: [
+        "1/2 taza de zanahoria",
+        "1/2 taza de chícharos",
+        "1/2 taza de elote",
+        "1 taza de arroz ya cocido",
+        "1 cucharadita de aceite",
+      ],
       pasos: [
         "Cocina 1/2 taza de zanahoria, 1/2 taza de chícharos y 1/2 taza de elote.",
         "Mezcla las verduras con 1 taza de arroz ya cocido.",
@@ -375,6 +402,12 @@ const CONTENT = {
       icono: "🍳",
       titulo: "Omelette de espinaca y tomate",
       resumen: "170 kcal por porción · 11 g de proteína",
+      ingredientes: [
+        "2 huevos",
+        "1/2 taza de espinaca",
+        "1 tomate pequeño",
+        "1 cucharadita de aceite",
+      ],
       pasos: [
         "Bate 2 huevos.",
         "Agrega 1/2 taza de espinaca y 1 tomate pequeño picado.",
@@ -388,6 +421,13 @@ const CONTENT = {
       icono: "🍲",
       titulo: "Sopa de verduras",
       resumen: "100 kcal por porción · 3 g de proteína",
+      ingredientes: [
+        "1 zanahoria",
+        "1 calabacita",
+        "1 papa pequeña",
+        "1 tomate",
+        "3 tazas de agua",
+      ],
       pasos: [
         "Corta 1 zanahoria, 1 calabacita, 1 papa pequeña y 1 tomate.",
         "Hierve todo en 3 tazas de agua hasta que las verduras estén suaves.",
@@ -401,6 +441,12 @@ const CONTENT = {
       icono: "🌮",
       titulo: "Tacos de lechuga con pollo",
       resumen: "200 kcal por porción · 15 g de proteína",
+      ingredientes: [
+        "Hojas de lechuga",
+        "100 g de pollo deshebrado",
+        "Tomate picado",
+        "Aguacate al gusto",
+      ],
       pasos: [
         "Lava bien las hojas de lechuga que usarás como base del taco.",
         "Rellena con 100 g de pollo deshebrado, tomate picado y aguacate al gusto.",
@@ -414,6 +460,12 @@ const CONTENT = {
       icono: "🥤",
       titulo: "Smoothie de fresa y espinaca",
       resumen: "140 kcal por porción · 6 g de proteína",
+      ingredientes: [
+        "1 taza de fresas",
+        "1/2 taza de espinaca",
+        "1 taza de leche",
+        "1 cucharadita de miel",
+      ],
       pasos: [
         "Lava 1 taza de fresas y 1/2 taza de espinaca.",
         "Licúa con 1 taza de leche y 1 cucharadita de miel hasta integrar bien.",
@@ -433,6 +485,12 @@ const CONTENT = {
       foto: "nidos-huevo-calabacita.jpg",
       titulo: "Nidos de huevo con calabacita y queso",
       resumen: "Desayuno ligero con calabacita, huevo y queso.",
+      ingredientes: [
+        "1 calabacita grande",
+        "3 huevos",
+        "1/2 taza de queso mozzarella",
+        "Sal y pimienta al gusto",
+      ],
       pasos: [
         "Corta 1 calabacita grande con un cortador de espiral (o rállala en tiras delgadas).",
         "Agrega 1/2 taza de queso mozzarella (o el de tu preferencia), sal y pimienta al gusto.",
@@ -448,6 +506,13 @@ const CONTENT = {
       foto: "carlota-fresas-crema.jpg",
       titulo: "Carlota estilo fresas con crema",
       resumen: "Postre fresco por capas, sin azúcar añadida.",
+      ingredientes: [
+        "Yogurt griego sin azúcar",
+        "Vainilla",
+        "Endulzante al gusto",
+        "Galletas María",
+        "1 taza de fresas",
+      ],
       pasos: [
         "Mezcla yogurt griego sin azúcar con vainilla y el endulzante de tu elección hasta lograr una mezcla homogénea.",
         "En un vaso o bowl, pon una capa de galletas María.",
@@ -463,6 +528,17 @@ const CONTENT = {
       foto: "pollo-estilo-chino.jpg",
       titulo: "Pollo estilo chino",
       resumen: "Salteado de pollo y verdura estilo asiático.",
+      ingredientes: [
+        "700 g de pechuga de pollo",
+        "2 cdas de aceite de ajonjolí u oliva",
+        "4 zanahorias",
+        "1 chayote o 1 calabaza",
+        "1/2 brócoli",
+        "3/4 taza de salsa de soya",
+        "1/4 taza de miel de abeja o agave",
+        "1/2 cdita de maicena",
+        "Cebolla y ajo al gusto",
+      ],
       pasos: [
         "En un sartén a fuego medio agrega aceite de ajonjolí u oliva, cebolla en cuadros medianos y ajo finamente picado.",
         "Cocina unos minutos y agrega 700 g de pechuga de pollo cortada en cubos medianos.",
@@ -478,6 +554,14 @@ const CONTENT = {
       foto: "avocado-toast.jpg",
       titulo: "Avocado toast",
       resumen: "Para 4 personas. Receta compartida por @valeriaalanisv.",
+      ingredientes: [
+        "2 rebanadas de pan integral",
+        "2 huevos",
+        "1 cdita de aceite de oliva",
+        "1/2 aguacate",
+        "Jitomate cherry",
+        "Sazonador de tu preferencia",
+      ],
       pasos: [
         "Tuesta 2 rebanadas de pan integral a tu gusto (o déjalo blandito).",
         "Cocina 2 huevos a tu gusto: estrellado o duro.",
@@ -493,6 +577,14 @@ const CONTENT = {
       foto: "tacos-pollo-guisado.jpg",
       titulo: "Tarde de tacos de pollo guisado",
       resumen: "Por la nutrióloga Ximena Hernández.",
+      ingredientes: [
+        "Media pechuga de pollo",
+        "2 tomates rojos",
+        "Media cebolla",
+        "7 ramas de cilantro",
+        "Sal al gusto",
+        "Tortillas de maíz",
+      ],
       pasos: [
         "En un sartén, sazona media cebolla picada, dos tomates rojos picados y siete ramas de cilantro picado.",
         "Cuando esté sazonado, agrega media pechuga de pollo y mezcla bien hasta obtener el guisado.",
@@ -508,6 +600,12 @@ const CONTENT = {
       foto: "galletas-arroz-aguacate.jpg",
       titulo: "Galletas de arroz y quinoa con aguacate y queso panela",
       resumen: "Snack rápido y crujiente.",
+      ingredientes: [
+        "1 paquete de galletas de arroz infladas",
+        "Queso panela (30 g por galleta)",
+        "Aguacate",
+        "Jitomate cherry al gusto",
+      ],
       pasos: [
         "En cada galleta de arroz inflado unta aguacate.",
         "Agrega 30 g de queso panela por galleta.",
@@ -521,6 +619,14 @@ const CONTENT = {
       foto: "smoothie-frutos-rojos.jpg",
       titulo: "Smoothie de frutos rojos",
       resumen: "Opción de desayuno rico y rápido. Receta de @valeriaalanisv.",
+      ingredientes: [
+        "Fresas o berries congeladas",
+        "1 vaso de leche",
+        "Proteína en polvo (opcional)",
+        "Chía",
+        "Yogurt griego",
+        "Almendras o nueces (opcional)",
+      ],
       pasos: [
         "En la licuadora mezcla berries o fresas, 1 vaso de leche y, si quieres, 1 scoop de proteína en polvo.",
         "Agrega chía para que la mezcla tome una consistencia tipo pudín.",
@@ -534,6 +640,10 @@ const CONTENT = {
       foto: "paletas-clight.jpg",
       titulo: "Paletas deliciosas",
       resumen: "Alternativa fría y sin azúcar añadida para los peques.",
+      ingredientes: [
+        "1 sobre de agua de sabor sin azúcar (del sabor que prefieras)",
+        "Medio litro de agua",
+      ],
       pasos: [
         "Diluye un sobre de agua de sabor sin azúcar (del sabor que prefieras) en medio litro de agua.",
         "Vierte en moldes para paleta.",
@@ -547,6 +657,12 @@ const CONTENT = {
       foto: "bites-yogurt-frutos-rojos.jpg",
       titulo: "Bites de yogurt con frutos rojos",
       resumen: "Snack congelado para toda la semana. Receta de @valeriaalanisv.",
+      ingredientes: [
+        "Moras",
+        "1 cucharada de chía",
+        "Miel",
+        "Yogurt griego",
+      ],
       pasos: [
         "En un bowl aplasta moras junto con una cucharada de chía y miel, hasta lograr una mezcla tipo mermelada.",
         "Mete la mezcla al refrigerador durante unas 2 horas.",
@@ -561,6 +677,13 @@ const CONTENT = {
       foto: "tacos-atun.jpg",
       titulo: "Tacos carnita de atún",
       resumen: "Cena ligera, alta en proteína, sin grasas trans. Nutrióloga Ximena Hernández.",
+      ingredientes: [
+        "1 cdita de ghee (mantequilla clarificada)",
+        "1 sobre de atún bajo en sodio",
+        "1 cdita de paprika",
+        "2 tortillas de nopal",
+        "Guacamole, limón, cilantro y cebolla al gusto",
+      ],
       pasos: [
         "Calienta 1 cdita de ghee (mantequilla clarificada) y saltea 1 sobre de atún bajo en sodio con 1 cdita de paprika.",
         "Calienta 2 tortillas de nopal.",
@@ -576,6 +699,17 @@ const CONTENT = {
       foto: "pan-frances-frutos-rojos.jpg",
       titulo: "Pan francés con frutos rojos",
       resumen: "Desayuno dulce sin azúcar añadida. Nutrióloga Ximena Hernández.",
+      ingredientes: [
+        "2 rebanadas de pan",
+        "1 huevo",
+        "1 sobre de stevia",
+        "1 pizca de canela molida",
+        "Un chorrito de vainilla",
+        "1 puño de frutos rojos",
+        "2 cdas de queso cottage",
+        "1 cda de miel de agave",
+        "1 cda de almendras fileteadas",
+      ],
       pasos: [
         "Mezcla 1 huevo, 1 sobre de stevia, 1 pizca de canela molida y un chorrito de vainilla; remoja ahí 2 rebanadas de pan.",
         "En un sartén, con media cucharadita de mantequilla, cocina el pan remojado.",
@@ -591,6 +725,15 @@ const CONTENT = {
       foto: "tacos-carne-saludables.jpg",
       titulo: "Tacos de carne saludables",
       resumen: "Alimento completo: carbohidratos, proteínas y grasas. Nutrióloga Ximena Hernández.",
+      ingredientes: [
+        "225 g de carne molida magra",
+        "3 tortillas de nopal",
+        "65 g de jitomate",
+        "40 g de cebolla",
+        "20 g de cilantro",
+        "1 pizca de sal",
+        "Salsa roja, limón y guacamole al gusto",
+      ],
       pasos: [
         "Cocina 225 g de carne molida magra con 65 g de jitomate, 40 g de cebolla y 20 g de cilantro picados, y 1 pizca de sal.",
         "Calienta 3 tortillas de nopal.",
@@ -1043,19 +1186,80 @@ function buildRecetaPreview(receta) {
 
   const toggleBtn = el("button", { type: "button", class: "btn btn--primary btn--sm" }, "Ver receta en pasos");
 
-  // La tarjeta guiada se construye una sola vez y se reutiliza cada vez
-  // que se abre el popup, así el progreso y el paso donde se quedó el
-  // usuario no se pierden al cerrar y volver a abrir.
-  let guidedCard = null;
+  // El contenido del modal se construye una sola vez y se reutiliza cada
+  // vez que se abre el popup, así el progreso y el paso donde se quedó
+  // el usuario no se pierden al cerrar y volver a abrir.
+  let modalBody = null;
   toggleBtn.addEventListener("click", () => {
-    if (!guidedCard) {
-      guidedCard = buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel", mostrarHeader: false });
+    if (!modalBody) {
+      modalBody = buildRecetaModalBody(receta);
     }
-    openModal({ title: receta.titulo, icon: receta.icono, bodyNode: guidedCard });
+    openModal({ title: receta.titulo, icon: receta.icono, bodyNode: modalBody });
   });
 
   wrap.appendChild(toggleBtn);
   return wrap;
+}
+
+/* =========================
+   Cuerpo del modal de receta: primero ingredientes, después pasos.
+   "Antes de empezar la receta" se muestra qué se necesita, para que
+   la mamá pueda revisar/comprar antes de ponerse a cocinar; el botón
+   "Comenzar receta" lleva al carrusel de pasos ya existente.
+   ========================= */
+
+function buildRecetaModalBody(receta) {
+  const container = el("div", { class: "recetaModal" });
+
+  const ingredientesView = el("div", { class: "recetaModal__ingredientes" });
+
+  if (receta.foto) {
+    const photoWrap = el("div", { class: "carrusel__photoWrap" });
+    photoWrap.appendChild(el("img", {
+      src: `assets/recetas/${receta.foto}`,
+      alt: `Foto de ${receta.titulo}`,
+      class: "carrusel__photo",
+      loading: "lazy",
+    }));
+    ingredientesView.appendChild(photoWrap);
+  }
+
+  if (receta.resumen) {
+    ingredientesView.appendChild(el("p", { class: "muted tiny" }, escapeHtml(receta.resumen)));
+  }
+
+  ingredientesView.appendChild(el("h4", { class: "h5 recetaModal__subtitle" }, "Ingredientes que necesitas"));
+
+  const ul = el("ul", { class: "ingredientesList" });
+  (receta.ingredientes || []).forEach((ing) => {
+    ul.appendChild(el("li", { class: "ingredientesList__item" }, escapeHtml(ing)));
+  });
+  ingredientesView.appendChild(ul);
+
+  if (receta.extra) {
+    ingredientesView.appendChild(el("p", { class: "tiny muted" }, receta.extra));
+  }
+
+  ingredientesView.appendChild(el("p", { class: "tiny muted recetaModal__tip" },
+    "Tip: revisa primero qué ya tienes en casa. Para lo demás, un mercado local o tianguis suele tener las frutas y verduras más frescas y a mejor precio que el supermercado; si compras algo empacado, elige el que tenga menos sellos de advertencia."
+  ));
+
+  const startBtn = el("button", { type: "button", class: "btn btn--primary recetaModal__start" }, "Comenzar receta →");
+  ingredientesView.appendChild(startBtn);
+
+  container.appendChild(ingredientesView);
+
+  let pasosView = null;
+  startBtn.addEventListener("click", () => {
+    if (!pasosView) {
+      pasosView = buildGuidedCard({ ...receta, categoria: "receta" }, { modo: "carrusel", mostrarHeader: false, ocultarFoto: true });
+      container.appendChild(pasosView);
+    }
+    ingredientesView.setAttribute("hidden", "hidden");
+    pasosView.removeAttribute("hidden");
+  });
+
+  return container;
 }
 
 /* =========================
@@ -1118,7 +1322,7 @@ function renderLactanciaPath() {
       let guidedCard = null;
       node.addEventListener("click", () => {
         if (!guidedCard) {
-          guidedCard = buildGuidedCard({ ...tema, categoria: "lactancia" }, { modo: "lista", mostrarHeader: false });
+          guidedCard = buildGuidedCard({ ...tema, categoria: "lactancia" }, { modo: "carrusel", mostrarHeader: false });
         }
         openModal({
           title: tema.titulo,

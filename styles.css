@@ -730,6 +730,38 @@
     padding: 0;
     flex: none;
   }
+  /* Pantalla de ingredientes, antes de empezar el carrusel de pasos */
+  .recetaModal__subtitle{ margin: 14px 0 6px; }
+  .recetaModal__tip{ margin: 8px 0 14px; }
+  .recetaModal__start{ width: 100%; }
+
+  .ingredientesList{
+    list-style: none;
+    margin: 8px 0 12px;
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ingredientesList__item{
+    position: relative;
+    padding: 10px 14px 10px 30px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: color-mix(in oklab, var(--panel) 90%, transparent);
+  }
+  .ingredientesList__item::before{
+    content:"";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
   .modalDialog__body .guiado__card{
     border: none;
     padding: 4px 0 0;
