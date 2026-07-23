@@ -68,8 +68,8 @@
     min-width: 190px;
   }
   .brand__mark{
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     display: block;
     flex-shrink: 0;
