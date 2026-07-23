@@ -68,15 +68,11 @@
     min-width: 190px;
   }
   .brand__mark{
-    width: 34px;
-    height: 34px;
-    border-radius: 12px;
-    display:grid;
-    place-items:center;
-    background: linear-gradient(135deg, rgba(153,239,77,.35), rgba(0,71,80,.45));
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    font-weight: 800;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
   }
   .brand__text{ font-weight: 800; letter-spacing:.2px; }
   .badge{

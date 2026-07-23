@@ -64,6 +64,9 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
 - **Flujo rápido** (`#como-funciona`): el selector original del prototipo, ahora
   conectado al contenido real y al módulo guiado.
 - **FAQ real** con 13 preguntas y respuestas verificadas.
+- **Logo real de Dianui**: el ícono del header y el favicon del sitio usan el logo
+  oficial de la Fundación DIANUI A.C. (`assets/logo/`), recortado y optimizado a
+  partir del archivo proporcionado por el alumno.
 
 ## Cómo agregar contenido nuevo
 
