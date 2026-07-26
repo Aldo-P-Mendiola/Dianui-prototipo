@@ -411,7 +411,7 @@ const CONTENT = {
       id: "crema-zanahoria-calabaza",
       icono: "🥕",
       titulo: "Crema de zanahoria y calabaza",
-      resumen: "120 kcal por porción · 2 g de proteína",
+      resumen: "120 kcal por porción · 2 g de proteína · ~25 min",
       ingredientes: [
         "2 zanahorias medianas",
         "1 taza de calabaza",
@@ -432,7 +432,7 @@ const CONTENT = {
       id: "ensalada-pepino-tomate",
       icono: "🥗",
       titulo: "Ensalada de pepino y tomate",
-      resumen: "80 kcal por porción · 2 g de proteína",
+      resumen: "80 kcal por porción · 2 g de proteína · ~10 min",
       ingredientes: [
         "1 pepino",
         "2 tomates",
@@ -453,7 +453,7 @@ const CONTENT = {
       id: "tortitas-espinaca",
       icono: "🥬",
       titulo: "Tortitas de espinaca",
-      resumen: "150 kcal por porción · 8 g de proteína",
+      resumen: "150 kcal por porción · 8 g de proteína · ~20 min",
       ingredientes: [
         "1 taza de espinaca picada",
         "1 huevo",
@@ -473,7 +473,7 @@ const CONTENT = {
       id: "arroz-con-verduras",
       icono: "🍚",
       titulo: "Arroz con verduras",
-      resumen: "190 kcal por porción · 5 g de proteína",
+      resumen: "190 kcal por porción · 5 g de proteína · ~15 min",
       ingredientes: [
         "1/2 taza de zanahoria",
         "1/2 taza de chícharos",
@@ -494,7 +494,7 @@ const CONTENT = {
       id: "omelette-espinaca-tomate",
       icono: "🍳",
       titulo: "Omelette de espinaca y tomate",
-      resumen: "170 kcal por porción · 11 g de proteína",
+      resumen: "170 kcal por porción · 11 g de proteína · ~10 min",
       ingredientes: [
         "2 huevos",
         "1/2 taza de espinaca",
@@ -514,7 +514,7 @@ const CONTENT = {
       id: "sopa-de-verduras",
       icono: "🍲",
       titulo: "Sopa de verduras",
-      resumen: "100 kcal por porción · 3 g de proteína",
+      resumen: "100 kcal por porción · 3 g de proteína · ~25 min",
       ingredientes: [
         "1 zanahoria",
         "1 calabacita",
@@ -535,7 +535,7 @@ const CONTENT = {
       id: "tacos-lechuga-pollo",
       icono: "🌮",
       titulo: "Tacos de lechuga con pollo",
-      resumen: "200 kcal por porción · 15 g de proteína",
+      resumen: "200 kcal por porción · 15 g de proteína · ~10 min",
       ingredientes: [
         "Hojas de lechuga",
         "100 g de pollo deshebrado",
@@ -555,7 +555,7 @@ const CONTENT = {
       id: "smoothie-fresa-espinaca",
       icono: "🥤",
       titulo: "Smoothie de fresa y espinaca",
-      resumen: "140 kcal por porción · 6 g de proteína",
+      resumen: "140 kcal por porción · 6 g de proteína · ~5 min",
       ingredientes: [
         "1 taza de fresas",
         "1/2 taza de espinaca",
@@ -581,7 +581,7 @@ const CONTENT = {
       icono: "🥚",
       foto: "nidos-huevo-calabacita.jpg",
       titulo: "Nidos de huevo con calabacita y queso",
-      resumen: "Desayuno ligero con calabacita, huevo y queso.",
+      resumen: "~200 kcal por porción (estimado) · 14 g de proteína · ~20 min · Desayuno ligero con calabacita, huevo y queso.",
       ingredientes: [
         "1 calabacita grande",
         "3 huevos",
@@ -603,7 +603,7 @@ const CONTENT = {
       icono: "🍓",
       foto: "carlota-fresas-crema.jpg",
       titulo: "Carlota estilo fresas con crema",
-      resumen: "Postre fresco por capas, sin azúcar añadida.",
+      resumen: "~150 kcal por porción (estimado) · 5 g de proteína · ~20 min + reposo en refrigerador · Postre fresco por capas, sin azúcar añadida.",
       ingredientes: [
         "Yogurt griego sin azúcar",
         "Vainilla",
@@ -626,7 +626,7 @@ const CONTENT = {
       icono: "🥡",
       foto: "pollo-estilo-chino.jpg",
       titulo: "Pollo estilo chino",
-      resumen: "Salteado de pollo y verdura estilo asiático.",
+      resumen: "~350 kcal por porción (estimado) · 35 g de proteína · ~30 min · Salteado de pollo y verdura estilo asiático.",
       ingredientes: [
         "700 g de pechuga de pollo",
         "2 cdas de aceite de ajonjolí u oliva",
@@ -653,7 +653,7 @@ const CONTENT = {
       icono: "🥑",
       foto: "avocado-toast.jpg",
       titulo: "Avocado toast",
-      resumen: "Para 4 personas. Receta compartida por @valeriaalanisv.",
+      resumen: "~300 kcal por porción (estimado) · 12 g de proteína · ~10 min · Para 4 personas. Receta compartida por @valeriaalanisv.",
       ingredientes: [
         "2 rebanadas de pan integral",
         "2 huevos",
@@ -677,7 +677,7 @@ const CONTENT = {
       icono: "🌯",
       foto: "tacos-pollo-guisado.jpg",
       titulo: "Tarde de tacos de pollo guisado",
-      resumen: "Por la nutrióloga Ximena Hernández.",
+      resumen: "~300 kcal por porción (estimado) · 25 g de proteína · ~25 min · Por la nutrióloga Ximena Hernández.",
       ingredientes: [
         "Media pechuga de pollo",
         "2 tomates rojos",
@@ -701,7 +701,7 @@ const CONTENT = {
       icono: "🍘",
       foto: "galletas-arroz-aguacate.jpg",
       titulo: "Galletas de arroz y quinoa con aguacate y queso panela",
-      resumen: "Snack rápido y crujiente.",
+      resumen: "~140 kcal por porción (estimado) · 6 g de proteína · ~5 min · Snack rápido y crujiente.",
       ingredientes: [
         "1 paquete de galletas de arroz infladas",
         "Queso panela (30 g por galleta)",
@@ -721,7 +721,7 @@ const CONTENT = {
       icono: "🍓",
       foto: "smoothie-frutos-rojos.jpg",
       titulo: "Smoothie de frutos rojos",
-      resumen: "Opción de desayuno rico y rápido. Receta de @valeriaalanisv.",
+      resumen: "~300 kcal por porción (estimado) · 15 g de proteína · ~10 min · Opción de desayuno rico y rápido. Receta de @valeriaalanisv.",
       ingredientes: [
         "Fresas o berries congeladas",
         "1 vaso de leche",
@@ -743,7 +743,7 @@ const CONTENT = {
       icono: "🧊",
       foto: "paletas-clight.jpg",
       titulo: "Paletas deliciosas",
-      resumen: "Alternativa fría y sin azúcar añadida para los peques.",
+      resumen: "~10 kcal por porción (estimado) · 0 g de proteína · ~5 min + congelación · Alternativa fría y sin azúcar añadida para los peques.",
       ingredientes: [
         "1 sobre de agua de sabor sin azúcar (del sabor que prefieras)",
         "Medio litro de agua",
@@ -761,7 +761,7 @@ const CONTENT = {
       icono: "🫐",
       foto: "bites-yogurt-frutos-rojos.jpg",
       titulo: "Bites de yogurt con frutos rojos",
-      resumen: "Snack congelado para toda la semana. Receta de @valeriaalanisv.",
+      resumen: "~70 kcal por porción (estimado) · 3 g de proteína · ~10 min + refrigeración · Snack congelado para toda la semana. Receta de @valeriaalanisv.",
       ingredientes: [
         "Moras",
         "1 cucharada de chía",
@@ -782,7 +782,7 @@ const CONTENT = {
       icono: "🐟",
       foto: "tacos-atun.jpg",
       titulo: "Tacos carnita de atún",
-      resumen: "Cena ligera, alta en proteína, sin grasas trans. Nutrióloga Ximena Hernández.",
+      resumen: "~270 kcal por porción (estimado) · 20 g de proteína · ~10 min · Cena ligera, alta en proteína, sin grasas trans. Nutrióloga Ximena Hernández.",
       ingredientes: [
         "1 cdita de ghee (mantequilla clarificada)",
         "1 sobre de atún bajo en sodio",
@@ -805,7 +805,7 @@ const CONTENT = {
       icono: "🍞",
       foto: "pan-frances-frutos-rojos.jpg",
       titulo: "Pan francés con frutos rojos",
-      resumen: "Desayuno dulce sin azúcar añadida. Nutrióloga Ximena Hernández.",
+      resumen: "~350 kcal por porción (estimado) · 15 g de proteína · ~15 min · Desayuno dulce sin azúcar añadida. Nutrióloga Ximena Hernández.",
       ingredientes: [
         "2 rebanadas de pan",
         "1 huevo",
@@ -832,7 +832,7 @@ const CONTENT = {
       icono: "🌮",
       foto: "tacos-carne-saludables.jpg",
       titulo: "Tacos de carne saludables",
-      resumen: "Alimento completo: carbohidratos, proteínas y grasas. Nutrióloga Ximena Hernández.",
+      resumen: "494 kcal por porción · 45 g de proteína (estimado) · ~15 min · Alimento completo: carbohidratos, proteínas y grasas. Nutrióloga Ximena Hernández.",
       ingredientes: [
         "225 g de carne molida magra",
         "3 tortillas de nopal",
@@ -1129,10 +1129,52 @@ document.addEventListener("DOMContentLoaded", () => {
      Recetario guiado
      ========================= */
   const recetarioGrid = $("#recetarioGrid");
+  const recetarioFiltros = $("#recetarioFiltros");
   if (recetarioGrid) {
-    CONTENT.recetas.forEach((receta) => {
-      recetarioGrid.appendChild(buildRecetaPreview(receta));
-    });
+    const FILTROS_RECETAS = ["Sin fritura", "Bajo en grasa", "Sin cocción", "Sin azúcar añadida"];
+    let filtroActivo = null;
+
+    function renderRecetario() {
+      recetarioGrid.innerHTML = "";
+      const lista = filtroActivo
+        ? CONTENT.recetas.filter((r) =>
+            (r.etiquetas || []).some((e) => e.toLowerCase().includes(filtroActivo.toLowerCase()))
+          )
+        : CONTENT.recetas;
+
+      if (!lista.length) {
+        recetarioGrid.appendChild(el("p", { class: "muted tiny" }, "No hay recetas con este filtro por ahora."));
+        return;
+      }
+      lista.forEach((receta) => recetarioGrid.appendChild(buildRecetaPreview(receta)));
+    }
+
+    if (recetarioFiltros) {
+      function marcarActivo(btn) {
+        [...recetarioFiltros.children].forEach((b) => b.classList.remove("filtroChip--activa"));
+        btn.classList.add("filtroChip--activa");
+      }
+
+      const allBtn = el("button", { type: "button", class: "filtroChip filtroChip--activa" }, "Todas");
+      allBtn.addEventListener("click", () => {
+        filtroActivo = null;
+        marcarActivo(allBtn);
+        renderRecetario();
+      });
+      recetarioFiltros.appendChild(allBtn);
+
+      FILTROS_RECETAS.forEach((filtro) => {
+        const btn = el("button", { type: "button", class: "filtroChip" }, `🌿 ${filtro}`);
+        btn.addEventListener("click", () => {
+          filtroActivo = filtro;
+          marcarActivo(btn);
+          renderRecetario();
+        });
+        recetarioFiltros.appendChild(btn);
+      });
+    }
+
+    renderRecetario();
   }
 
   /* =========================
@@ -1463,10 +1505,14 @@ function renderLactanciaPath() {
         });
       });
 
-      const label = el("p", { class: "lessonPath__label tiny" }, escapeHtml(tema.titulo));
+      const labelWrap = el("div", { class: "lessonPath__labelWrap" });
+      labelWrap.appendChild(el("p", { class: "lessonPath__label tiny" }, escapeHtml(tema.titulo)));
+      if (tema.resumen) {
+        labelWrap.appendChild(el("p", { class: "lessonPath__desc tiny muted" }, escapeHtml(tema.resumen)));
+      }
 
       row.appendChild(node);
-      row.appendChild(label);
+      row.appendChild(labelWrap);
       pathRoot.appendChild(row);
     });
   }

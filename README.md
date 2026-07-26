@@ -42,7 +42,13 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   baratos) y, al presionar "Comenzar receta", pasa al carrusel de pasos.
   Cada receta también muestra etiquetas en su tarjeta (por ejemplo "Sin
   fritura" o "Bajo en grasa"), basadas en su método real de preparación,
-  para no depender solo de la foto para saber si conviene.
+  para no depender solo de la foto para saber si conviene. Arriba del
+  recetario hay chips para filtrar por esas mismas etiquetas, y cada
+  tarjeta incluye un tiempo aproximado de preparación. Las 12 recetas de
+  la comunidad, que no traían dato nutricional, ahora también muestran
+  kcal y proteína estimados a partir de sus ingredientes (marcados como
+  "estimado", no medición de laboratorio), para parejar con las 8
+  originales.
 - **Hábitos, descanso y actividad física**: tips reales basados en las *Guías
   Alimentarias saludables y sostenibles para la población mexicana 2025*
   (SSA, INSP, UNICEF), Recomendaciones 6, 7, 9 y 10.
@@ -52,7 +58,8 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   profesional), presentadas como una ruta de lecciones estilo Duolingo/Sololearn
   (`renderLactanciaPath` en `app.js`): cada tema es un nodo circular que cambia
   de color según el avance guardado (sin empezar / en progreso / completo), con
-  una barra de progreso general arriba. Cada lección se muestra en formato de
+  una barra de progreso general arriba y una descripción corta debajo de cada
+  título para saber de qué trata la lección antes de abrirla. Cada lección se muestra en formato de
   slides (un paso a la vez, igual que las recetas), así la lección se va
   completando conforme avanzas. Contenido generado únicamente a partir
   de dos documentos proporcionados en `4.0 Red Aliados/Nuevo contenido`:
