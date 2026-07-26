@@ -425,6 +425,7 @@ const CONTENT = {
         "Licúa todo y sirve tibio.",
       ],
       extra: "Porción sugerida: 1/2 taza (0-2 años), 3/4 taza (3-5 años), 1 taza (6-12 años).",
+      etiquetas: ["Sin fritura", "Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -445,6 +446,7 @@ const CONTENT = {
         "Sirve fresca.",
       ],
       extra: "Porción sugerida: 1/4 taza (0-2 años), 1/2 taza (3-5 años), 3/4 taza (6-12 años).",
+      etiquetas: ["Sin cocción", "Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -464,6 +466,7 @@ const CONTENT = {
         "Cocina en un sartén antiadherente hasta que doren por ambos lados.",
       ],
       extra: "Porción sugerida: 1 tortita (0-2 años), 2 tortitas (3-5 años), 3 tortitas (6-12 años).",
+      etiquetas: ["A la plancha", "Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -484,6 +487,7 @@ const CONTENT = {
         "Saltea todo junto con 1 cucharadita de aceite por un par de minutos.",
       ],
       extra: "Porción sugerida: 1/3 taza (0-2 años), 1/2 taza (3-5 años), 1 taza (6-12 años).",
+      etiquetas: ["Salteado con poco aceite"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -503,6 +507,7 @@ const CONTENT = {
         "Cocina todo en un sartén con 1 cucharadita de aceite.",
       ],
       extra: "Porción sugerida: 1/2 omelette (0-2 años), 3/4 (3-5 años), 1 completo (6-12 años).",
+      etiquetas: ["Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -523,6 +528,7 @@ const CONTENT = {
         "Sirve caliente.",
       ],
       extra: "Porción sugerida: 1/2 taza (0-2 años), 3/4 taza (3-5 años), 1 taza (6-12 años).",
+      etiquetas: ["Sin fritura", "Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -542,6 +548,7 @@ const CONTENT = {
         "Sirve fresco, sin necesidad de tortilla.",
       ],
       extra: "Porción sugerida: 1 taco pequeño (0-2 años), 2 (3-5 años), 3 (6-12 años).",
+      etiquetas: ["Sin cocción", "Bajo en grasa"],
       fuente: FUENTE_RECETAS,
     },
     {
@@ -561,6 +568,7 @@ const CONTENT = {
         "Sirve frío.",
       ],
       extra: "Porción sugerida: 1/2 vaso (0-2 años), 3/4 vaso (3-5 años), 1 vaso (6-12 años).",
+      etiquetas: ["Sin cocción"],
       fuente: FUENTE_RECETAS,
     },
 
@@ -587,6 +595,7 @@ const CONTENT = {
         "En medio de cada nido agrega 1 huevo.",
         "Agrega pimienta y cocina unos minutos, tapado, hasta que el huevo cuaje a tu gusto.",
       ],
+      etiquetas: ["Bajo en grasa"],
       fuente: FUENTE_COMUNIDAD,
     },
     {
@@ -609,6 +618,7 @@ const CONTENT = {
         "Repite las capas necesarias hasta llenar el vaso.",
         "Encima pon más yogurt griego y galletas María troceadas; mete al refrigerador por unas horas y disfruta.",
       ],
+      etiquetas: ["Sin cocción", "Sin azúcar añadida"],
       fuente: FUENTE_COMUNIDAD,
     },
     {
@@ -635,6 +645,7 @@ const CONTENT = {
         "Agrega 3/4 taza de salsa de soya, 1/4 taza de miel de abeja (o agave) y 1/2 cdita de maicena diluida en 1/3 taza de agua; mezcla, tapa y cocina unos 4 minutos.",
         "Por último agrega 1/2 brócoli, tapa de nuevo y cocina hasta que la verdura quede a tu gusto.",
       ],
+      etiquetas: ["Salteado, sin fritura"],
       fuente: FUENTE_COMUNIDAD,
     },
     {
@@ -658,6 +669,7 @@ const CONTENT = {
         "Agrega el huevo encima del pan con aguacate; sazona con sal y pimienta al gusto.",
         "Al final agrega jitomate cherry cortado a la mitad y 1 cdita de aceite de oliva.",
       ],
+      etiquetas: ["Bajo en grasa"],
       fuente: FUENTE_VALERIA,
     },
     {
@@ -681,6 +693,7 @@ const CONTENT = {
         "Llévalos a la freidora de aire hasta que estén crujientes.",
         "Prepara tu salsa favorita para acompañar, con queso y crema baja en grasa al gusto.",
       ],
+      etiquetas: ["Freidora de aire, sin fritura en aceite"],
       fuente: FUENTE_XIMENA,
     },
     {
@@ -700,6 +713,7 @@ const CONTENT = {
         "Agrega 30 g de queso panela por galleta.",
         "Agrega jitomate cherry al gusto.",
       ],
+      etiquetas: ["Sin cocción"],
       fuente: FUENTE_COMUNIDAD,
     },
     {
@@ -721,6 +735,7 @@ const CONTENT = {
         "Agrega chía para que la mezcla tome una consistencia tipo pudín.",
         "Sirve sobre yogurt griego y agrega la mezcla; de topping puedes usar almendras o nueces.",
       ],
+      etiquetas: ["Sin cocción"],
       fuente: FUENTE_VALERIA,
     },
     {
@@ -738,6 +753,7 @@ const CONTENT = {
         "Vierte en moldes para paleta.",
         "Congela hasta que cuajen; no necesitan endulzante extra.",
       ],
+      etiquetas: ["Sin cocción", "Sin azúcar añadida"],
       fuente: FUENTE_COMUNIDAD,
     },
     {
@@ -758,6 +774,7 @@ const CONTENT = {
         "Coloca yogurt griego en un bowl, toma la mezcla de frutos rojos ya fría y cúbrela con el yogurt.",
         "Mete al congelador unas 2 horas más y disfruta.",
       ],
+      etiquetas: ["Sin cocción"],
       fuente: FUENTE_VALERIA,
     },
     {
@@ -780,6 +797,7 @@ const CONTENT = {
         "Agrega guacamole, cilantro y cebolla al gusto, y unas gotas de limón.",
       ],
       extra: "Aporta unos 20 g de proteína por cada 2 tacos.",
+      etiquetas: ["Bajo en grasa", "Sin grasas trans"],
       fuente: FUENTE_XIMENA,
     },
     {
@@ -806,6 +824,7 @@ const CONTENT = {
         "Sirve el pan ya cocido con los frutos rojos, 2 cdas de queso cottage, 1 cda de miel de agave y 1 cda de almendras fileteadas.",
         "Acompaña con té verde o jugo verde, el de tu preferencia.",
       ],
+      etiquetas: ["Bajo en grasa"],
       fuente: FUENTE_XIMENA,
     },
     {
@@ -830,6 +849,7 @@ const CONTENT = {
         "Acompaña con salsa roja, limón y guacamole al gusto.",
       ],
       extra: "Aporta 494 kcal en total; la tortilla de nopal ayuda a reducir la glucosa en sangre.",
+      etiquetas: ["Sin fritura", "Bajo en grasa"],
       fuente: FUENTE_XIMENA,
     },
   ],
@@ -1260,6 +1280,14 @@ function buildRecetaPreview(receta) {
   top.appendChild(el("h3", { class: "h5 recetaTile__titulo" }, escapeHtml(receta.titulo)));
   wrap.appendChild(top);
 
+  if (receta.etiquetas && receta.etiquetas.length) {
+    const tags = el("div", { class: "recetaTile__tags" });
+    receta.etiquetas.forEach((tag) => {
+      tags.appendChild(el("span", { class: "tagBadge" }, `🌿 ${escapeHtml(tag)}`));
+    });
+    wrap.appendChild(tags);
+  }
+
   if (receta.resumen) {
     const chips = el("div", { class: "recetaTile__chips" });
     receta.resumen
@@ -1570,6 +1598,14 @@ const FAQ = [
   {
     q: "¿La app tiene información sobre lactancia materna?",
     a: "Sí. En la sección \"Lactancia materna\" encontrarás qué es la lactancia exclusiva, cómo es la leche materna, la técnica correcta, la alimentación recomendada para la mamá y sus beneficios, basado en material real de la Fundación DIANUI A.C. y de la Asociación Española de Pediatría.",
+  },
+  {
+    q: "¿Qué son los sellos de advertencia en los empaques?",
+    a: "Son los octágonos negros que ves en el frente de los productos empacados en México, obligatorios desde la NOM-051-SCFI/SSA1-2019. Cada uno avisa que ese producto tiene EXCESO de calorías, azúcares, grasas saturadas, grasas trans o sodio; también existen las leyendas \"contiene cafeína\" y \"contiene edulcorantes, no recomendable en niños\". Entre menos sellos tenga un producto, mejor. Por eso en la guía de compra de cada receta te recordamos elegir la opción con menos sellos cuando haya varias marcas para escoger.",
+  },
+  {
+    q: "¿Cómo puedo cocinar con menos grasa en casa?",
+    a: "Algunas ideas prácticas: prefiere hornear, cocer al vapor, saltear con poco aceite o usar freidora de aire en vez de freír por inmersión; mide el aceite con cuchara en lugar de \"al ojo\"; retira la grasa visible de la carne antes de cocinarla; y usa yogurt o crema baja en grasa en vez de crema entera cuando la receta lo permita. En el recetario, las recetas marcadas como \"Sin fritura\" o \"Bajo en grasa\" ya siguen varios de estos principios.",
   },
 ];
 

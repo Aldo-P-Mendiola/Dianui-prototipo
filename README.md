@@ -40,6 +40,9 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   abre en un popup/modal que primero muestra los ingredientes que se
   necesitan (con un tip general de dónde conseguirlos más frescos y
   baratos) y, al presionar "Comenzar receta", pasa al carrusel de pasos.
+  Cada receta también muestra etiquetas en su tarjeta (por ejemplo "Sin
+  fritura" o "Bajo en grasa"), basadas en su método real de preparación,
+  para no depender solo de la foto para saber si conviene.
 - **Hábitos, descanso y actividad física**: tips reales basados en las *Guías
   Alimentarias saludables y sostenibles para la población mexicana 2025*
   (SSA, INSP, UNICEF), Recomendaciones 6, 7, 9 y 10.
@@ -63,7 +66,9 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   pronto".
 - **Flujo rápido** (`#como-funciona`): el selector original del prototipo, ahora
   conectado al contenido real y al módulo guiado.
-- **FAQ real** con 13 preguntas y respuestas verificadas.
+- **FAQ real** con 15 preguntas y respuestas verificadas, incluyendo qué son
+  los sellos de advertencia (NOM-051-SCFI/SSA1-2019) y cómo cocinar con
+  menos grasa en casa.
 - **Logo real de Dianui**: el ícono del header y el favicon del sitio usan el logo
   oficial de la Fundación DIANUI A.C. (`assets/logo/`), recortado y optimizado a
   partir del archivo proporcionado por el alumno.
