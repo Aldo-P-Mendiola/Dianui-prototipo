@@ -906,6 +906,10 @@
     font: inherit;
   }
   .menuCard:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--accent2) 45%, var(--border)); }
+  .menuCard--temporal{
+    border-style: dashed;
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+  }
   .menuCard__icon{
     width: 44px;
     height: 44px;
