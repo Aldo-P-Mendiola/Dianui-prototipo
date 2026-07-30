@@ -202,6 +202,29 @@
   }
   
   .label{ display:block; margin-bottom: 8px; color: var(--muted); font-size: 13px; }
+
+  .feedbackForm{
+    display:flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 560px;
+  }
+  .feedbackForm .label{ margin-top: 14px; }
+  .feedbackForm textarea.input{
+    height: auto;
+    min-height: 88px;
+    padding: 10px 12px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  .feedbackForm .hidden-field{
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .feedbackForm__actions{ margin-top: 18px; }
   
   .divider{
     height: 1px;

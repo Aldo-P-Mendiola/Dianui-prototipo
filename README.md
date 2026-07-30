@@ -71,6 +71,18 @@ Para verlo localmente, solo abre `index.html` en el navegador (no requiere servi
   mostrar uno o varios nutriólogos con su contacto en cuanto la Fundación DIANUI
   A.C. los proporcione. Mientras tanto, muestra un mensaje honesto de "muy
   pronto".
+- **Feedback para nutriólogos** (`#feedback`): formulario dirigido a los
+  nutriólogos y pasantes que están probando la app antes de mostrársela a más
+  mamás. No aparece en el menú principal ni en la navegación (para no saturar
+  la experiencia de las mamás) — se comparte directamente el enlace
+  `https://dianui911.netlify.app/#feedback` con quien vaya a probarla. Pregunta
+  por perfil profesional, calificación del Recetario, Lactancia y la guía de
+  compra, riesgos o errores encontrados, qué cambiarían, si recomendarían la
+  app y si les interesa unirse al futuro directorio de nutriólogos. Usa
+  [Netlify Forms](https://docs.netlify.com/manage/forms/setup/): el envío es
+  por AJAX (`data-netlify="true"` + honeypot anti-spam) y **solo funciona una
+  vez publicado en Netlify**, no en GitHub Pages. Las respuestas se revisan
+  desde el panel de Netlify del sitio, pestaña "Forms".
 - **Flujo rápido** (`#como-funciona`): el selector original del prototipo, ahora
   conectado al contenido real y al módulo guiado.
 - **FAQ real** con 15 preguntas y respuestas verificadas, incluyendo qué son

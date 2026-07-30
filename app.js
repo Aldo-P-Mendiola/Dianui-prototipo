@@ -1050,7 +1050,7 @@ function renderNutriologos() {
    que la mamá lo pide.
    ========================= */
 
-const SCREEN_IDS = ["home", "que-es", "como-funciona", "recetario", "lactancia", "nutriologos", "faq"];
+const SCREEN_IDS = ["home", "que-es", "como-funciona", "recetario", "lactancia", "nutriologos", "faq", "feedback"];
 
 function showScreen(id, opts) {
   opts = opts || {};
@@ -1230,6 +1230,54 @@ document.addEventListener("DOMContentLoaded", () => {
   if (collapseAllBtn) {
     collapseAllBtn.addEventListener("click", () => {
       $all("#faqList details").forEach((d) => (d.open = false));
+    });
+  }
+
+  /* =========================
+     Formulario de feedback (nutriólogos)
+     Se envía por AJAX a Netlify Forms para no recargar la
+     pantalla. Solo funciona una vez publicado en Netlify
+     (donde Netlify detecta el atributo data-netlify="true"
+     en el HTML); en GitHub Pages el envío falla, y se lo
+     decimos a quien lo llena en vez de fingir que se guardó.
+     ========================= */
+  const feedbackForm = $("#feedbackForm");
+  if (feedbackForm) {
+    feedbackForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const status = $("#feedbackStatus");
+      const submitBtn = feedbackForm.querySelector("button[type=submit]");
+      const body = new URLSearchParams(new FormData(feedbackForm)).toString();
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = "Enviando...";
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Respuesta no exitosa");
+          feedbackForm.reset();
+          feedbackForm.hidden = true;
+          if (status) status.textContent = "";
+          const thanks = el("div", { class: "callout", id: "feedbackThanks" });
+          thanks.appendChild(el("p", { class: "callout__title" }, "¡Gracias por tu feedback!"));
+          thanks.appendChild(el("p", { class: "callout__body" },
+            "Ya quedó registrado. Lo revisamos antes de mostrarle la app a más mamás."
+          ));
+          feedbackForm.insertAdjacentElement("beforebegin", thanks);
+        })
+        .catch(() => {
+          if (status) {
+            status.textContent =
+              "No se pudo enviar (esto solo funciona en la versión publicada en Netlify). Mándame tus respuestas directamente mientras tanto.";
+          }
+        })
+        .finally(() => {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 });
