@@ -286,7 +286,7 @@
       </p>
       <p class="disclaimer">
         Si encuentras algo que te parezca poco seguro o incorrecto, descríbelo con detalle
-        en la pregunta correspondiente: es la parte más importante de este formulario.
+        en el campo de feedback: es lo más importante que nos puedes decir.
       </p>
 
       <form
@@ -305,75 +305,26 @@
         <label class="label" for="fbNombre">Nombre completo</label>
         <input class="input" type="text" id="fbNombre" name="Nombre completo" required />
 
+        <label class="label" for="fbInstitucion">Institución</label>
+        <input class="input" type="text" id="fbInstitucion" name="Institución" required />
+
         <label class="label" for="fbContacto">Correo o WhatsApp para dar seguimiento</label>
         <input class="input" type="text" id="fbContacto" name="Contacto" required />
 
-        <label class="label" for="fbInstitucion">Cédula profesional o institución (opcional)</label>
-        <input class="input" type="text" id="fbInstitucion" name="Cédula o institución" />
-
-        <label class="label" for="fbExperiencia">Años de experiencia en nutrición</label>
-        <select class="input" id="fbExperiencia" name="Años de experiencia" required>
+        <label class="label" for="fbSeccion">¿Sobre qué sección de la app es tu feedback?</label>
+        <select class="input" id="fbSeccion" name="Sección" required>
           <option value="">Selecciona una opción</option>
-          <option value="Menos de 1 año">Menos de 1 año</option>
-          <option value="1 a 3 años">1 a 3 años</option>
-          <option value="4 a 10 años">4 a 10 años</option>
-          <option value="Más de 10 años">Más de 10 años</option>
+          <option value="Recetario">Recetario</option>
+          <option value="Lactancia materna">Lactancia materna</option>
+          <option value="Guía de compra (marca/lugar/precio de ingredientes)">Guía de compra (marca/lugar/precio de ingredientes)</option>
+          <option value="Cómo funciona / flujo rápido">Cómo funciona / flujo rápido</option>
+          <option value="Nutriólogos">Nutriólogos</option>
+          <option value="Preguntas frecuentes">Preguntas frecuentes</option>
+          <option value="Toda la app en general">Toda la app en general</option>
         </select>
 
-        <label class="label" for="fbRecetario">¿Qué tan clara y correcta te pareció la información nutricional del Recetario?</label>
-        <select class="input" id="fbRecetario" name="Calificación Recetario" required>
-          <option value="">Selecciona una calificación</option>
-          <option value="1 - Nada clara o con errores">1 - Nada clara o con errores</option>
-          <option value="2">2</option>
-          <option value="3 - Aceptable">3 - Aceptable</option>
-          <option value="4">4</option>
-          <option value="5 - Clara y correcta">5 - Clara y correcta</option>
-        </select>
-
-        <label class="label" for="fbLactancia">¿Qué tan clara y correcta te pareció la información de Lactancia materna?</label>
-        <select class="input" id="fbLactancia" name="Calificación Lactancia" required>
-          <option value="">Selecciona una calificación</option>
-          <option value="1 - Nada clara o con errores">1 - Nada clara o con errores</option>
-          <option value="2">2</option>
-          <option value="3 - Aceptable">3 - Aceptable</option>
-          <option value="4">4</option>
-          <option value="5 - Clara y correcta">5 - Clara y correcta</option>
-        </select>
-
-        <label class="label" for="fbGuiaCompra">¿Qué tan útil te pareció la guía de compra (marca sugerida, lugar y precio aproximado por ingrediente)?</label>
-        <select class="input" id="fbGuiaCompra" name="Calificación guía de compra" required>
-          <option value="">Selecciona una calificación</option>
-          <option value="1 - Nada útil">1 - Nada útil</option>
-          <option value="2">2</option>
-          <option value="3 - Aceptable">3 - Aceptable</option>
-          <option value="4">4</option>
-          <option value="5 - Muy útil">5 - Muy útil</option>
-        </select>
-
-        <label class="label" for="fbRiesgo">¿Encontraste alguna recomendación que te preocupe o que consideres poco segura para las usuarias? Descríbela con el mayor detalle posible.</label>
-        <textarea class="input" id="fbRiesgo" name="Posibles riesgos encontrados" rows="4"></textarea>
-
-        <label class="label" for="fbFalta">¿Qué le falta o qué cambiarías en el contenido?</label>
-        <textarea class="input" id="fbFalta" name="Qué cambiarías" rows="4"></textarea>
-
-        <label class="label" for="fbRecomienda">¿Recomendarías esta app a tus pacientes tal como está hoy?</label>
-        <select class="input" id="fbRecomienda" name="Recomendaría la app" required>
-          <option value="">Selecciona una opción</option>
-          <option value="Sí, tal como está">Sí, tal como está</option>
-          <option value="Sí, pero con cambios">Sí, pero con cambios</option>
-          <option value="No todavía">No todavía</option>
-        </select>
-
-        <label class="label" for="fbDirectorio">¿Te interesaría ser parte del directorio de nutriólogos de contacto dentro de la app?</label>
-        <select class="input" id="fbDirectorio" name="Interés en directorio" required>
-          <option value="">Selecciona una opción</option>
-          <option value="Sí">Sí</option>
-          <option value="Tal vez más adelante">Tal vez más adelante</option>
-          <option value="No">No</option>
-        </select>
-
-        <label class="label" for="fbComentarios">Comentarios adicionales (opcional)</label>
-        <textarea class="input" id="fbComentarios" name="Comentarios adicionales" rows="3"></textarea>
+        <label class="label" for="fbComentarios">Tu feedback</label>
+        <textarea class="input" id="fbComentarios" name="Feedback" rows="5" required></textarea>
 
         <div class="feedbackForm__actions">
           <button type="submit" class="btn btn--primary">Enviar feedback</button>
